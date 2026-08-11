@@ -1,0 +1,10 @@
+{
+  "name": "portifolio-joao-paulo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portifolio estatico leve com testes de smoke",
+  "scripts": {
+    "test": "node --test tests/smoke.test.js",
+    "test:watch": "node --test --watch tests/smoke.test.js"
+  }
+}

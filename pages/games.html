@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games | Joao Paulo Martins</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container nav">
+        <a class="logo" href="../index.html">Meu Portifolio</a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">☰</button>
+        <ul class="menu" id="menu">
+          <li><a href="../index.html#inicio">Inicio</a></li>
+          <li><a href="../index.html#sobre">Sobre</a></li>
+          <li><a href="../index.html#experiencias">Experiencias</a></li>
+          <li><a href="../index.html#projetos">Projetos</a></li>
+          <li><a href="../index.html#galeria">Galeria</a></li>
+          <li><a href="../index.html#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container section page-view">
+      <a class="btn ghost" href="../index.html#galeria">← Voltar para galeria</a>
+
+      <h1 class="page-title">🎮 Games</h1>
+      <p class="muted">Perfis e mini games renderizados nesta pagina.</p>
+
+      <div class="panel-block">
+        <h3>PlayStation Network</h3>
+        <p class="muted">ID: <strong id="psn-id">...</strong></p>
+        <p>Perfil de jogos no ecossistema PlayStation.</p>
+      </div>
+
+      <div class="panel-block">
+        <h3>Wild Rift</h3>
+        <p class="muted">Riot ID: <strong id="wild-rift-id">...</strong></p>
+        <p>Perfil no League of Legends: Wild Rift.</p>
+      </div>
+
+      <div class="panel-block">
+        <h3>Mini games</h3>
+        <p class="muted">Jogo da velha com modo 2 jogadores ou vs bot.</p>
+
+        <div class="tictactoe-controls">
+          <button class="btn ghost active" type="button" data-mode="pvp">2 jogadores</button>
+          <button class="btn ghost" type="button" data-mode="bot">Vs bot</button>
+        </div>
+
+        <div class="tictactoe">
+          <p id="status">Vez do jogador X</p>
+          <div id="board" class="board" aria-label="Tabuleiro do jogo da velha"></div>
+          <button id="reset" class="btn ghost" type="button">Reiniciar</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> <span id="footer-name">Joao Paulo Martins</span>.</p>
+    </footer>
+
+    <script src="../config.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/pages.js"></script>
+    <script src="../js/tictactoe.js"></script>
+  </body>
+</html>

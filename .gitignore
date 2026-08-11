@@ -1,0 +1,3 @@
+tests/_config.tmp.cjs
+node_modules/
+.DS_Store
