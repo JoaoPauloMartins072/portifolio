@@ -1,0 +1,29 @@
+---
+description: Slash commands /commit and /commitpush for non-interactive git
+alwaysApply: true
+---
+
+# Git slash commands
+
+When the user message contains these commands, execute immediately without asking for confirmation or Enter.
+
+## `/commit`
+- Commit only
+- Do NOT push
+- Follow the repo git safety protocol (status, diff, log, stage, commit, verify)
+- Non-interactive only (no `-i`, no editors waiting for input)
+- On Windows PowerShell, use a here-string for the commit message
+
+## `/commitpush`
+- Commit if there are changes
+- Then push to the tracked remote (`git push -u origin HEAD` if upstream is missing)
+- If no remote exists, create one with `gh repo create` only when clearly needed, then push
+- Non-interactive only
+- Return the commit hash and remote URL/status when done
+
+## Shared behavior
+- Never update git config
+- Never force-push to main/master unless explicitly requested
+- Never skip hooks unless explicitly requested
+- Do not commit secrets (`.env`, credentials, tokens)
+- If there is nothing to commit, say so; for `/commitpush`, still push if the branch is ahead
