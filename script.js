@@ -2,8 +2,18 @@ function getConfig() {
   return window.PORTFOLIO_CONFIG || {};
 }
 
+function getI18n() {
+  return window.PortfolioI18n;
+}
+
 function applyProfileContent() {
-  const profile = getConfig().profile || {};
+  const i18n = getI18n();
+  if (!i18n) return;
+
+  const dict = i18n.getDict();
+  const profile = dict.profile || {};
+  const name = getConfig().profile?.name || "Joao Paulo Martins";
+
   const heroTag = document.getElementById("hero-tag");
   const heroTitle = document.getElementById("hero-title");
   const heroText = document.getElementById("hero-text");
@@ -13,8 +23,8 @@ function applyProfileContent() {
     heroTag.textContent = profile.roleTag;
   }
 
-  if (heroTitle && profile.name) {
-    heroTitle.innerHTML = `Ola, eu sou <span class="highlight">${profile.name}</span>`;
+  if (heroTitle) {
+    heroTitle.innerHTML = `${i18n.t("hero.hello")} <span class="highlight">${name}</span>`;
   }
 
   if (heroText && profile.intro) {
@@ -28,10 +38,11 @@ function applyProfileContent() {
 
 function renderExperiences() {
   const container = document.getElementById("experience-cards");
-  if (!container) return;
+  const i18n = getI18n();
+  if (!container || !i18n) return;
 
-  const experiences = Array.isArray(getConfig().experience)
-    ? getConfig().experience
+  const experiences = Array.isArray(i18n.getDict().experience)
+    ? i18n.getDict().experience
     : [];
   container.innerHTML = "";
 
@@ -39,7 +50,7 @@ function renderExperiences() {
     const article = document.createElement("article");
     article.className = "card";
     article.innerHTML = `
-      <h3>${item.title || "Experiencia"}</h3>
+      <h3>${item.title || ""}</h3>
       <p class="muted">${item.period || ""}</p>
       <p>${item.description || ""}</p>
     `;
@@ -75,32 +86,30 @@ function renderContact() {
 
 function renderGallery() {
   const grid = document.getElementById("gallery-grid");
-  if (!grid) return;
+  const i18n = getI18n();
+  if (!grid || !i18n) return;
 
+  const g = i18n.getDict().gallery || {};
   const categories = [
     {
       href: "./pages/games.html",
-      icon: "🎮",
-      title: "Games",
-      subtitle: "PSN, Wild Rift e mini games"
+      title: g.gamesTitle || "Games",
+      subtitle: g.gamesSubtitle || ""
     },
     {
       href: "./pages/musica.html",
-      icon: "🎵",
-      title: "Musica",
-      subtitle: "Baterista e playlist"
+      title: g.musicTitle || "Music",
+      subtitle: g.musicSubtitle || ""
     },
     {
       href: "./pages/fotos.html",
-      icon: "📷",
-      title: "Fotos",
-      subtitle: "Instagram privado"
+      title: g.photosTitle || "Photos",
+      subtitle: g.photosSubtitle || ""
     },
     {
       href: "./pages/codigos.html",
-      icon: "💻",
-      title: "Codigos",
-      subtitle: "GitHub e content dev"
+      title: g.codeTitle || "Code",
+      subtitle: g.codeSubtitle || ""
     }
   ];
 
@@ -108,7 +117,7 @@ function renderGallery() {
     .map(
       (item) => `
         <a class="gallery-item" href="${item.href}">
-          <h3>${item.icon} ${item.title}</h3>
+          <h3>${item.title}</h3>
           <p class="muted">${item.subtitle}</p>
         </a>
       `
@@ -119,18 +128,20 @@ function renderGallery() {
 async function renderGithubProjects() {
   const cards = document.getElementById("project-cards");
   const meta = document.getElementById("projects-meta");
+  const i18n = getI18n();
   const api = getConfig().api || {};
   const username = api.githubUsername;
   const limit = api.githubProjectsLimit || 6;
 
-  if (!cards || !meta) return;
+  if (!cards || !meta || !i18n) return;
 
   if (!username || username === "seu-usuario") {
-    meta.textContent =
-      "Defina seu usuario no arquivo config.js para carregar projetos reais.";
+    meta.textContent = i18n.t("projects.missingUser");
     cards.innerHTML = "";
     return;
   }
+
+  meta.textContent = i18n.t("projects.loading");
 
   try {
     const response = await fetch(
@@ -142,7 +153,7 @@ async function renderGithubProjects() {
     }
 
     const repos = await response.json();
-    meta.textContent = `Projetos carregados automaticamente do GitHub (@${username}).`;
+    meta.textContent = i18n.t("projects.loaded", { user: username });
     cards.innerHTML = "";
 
     repos.forEach((repo) => {
@@ -150,15 +161,14 @@ async function renderGithubProjects() {
       article.className = "card";
       article.innerHTML = `
         <h3>${repo.name}</h3>
-        <p>${repo.description || "Sem descricao no repositorio."}</p>
-        <p class="muted">${repo.language || "Linguagem nao informada"}</p>
-        <a class="btn ghost" href="${repo.html_url}" target="_blank" rel="noreferrer">Abrir no GitHub</a>
+        <p>${repo.description || i18n.t("projects.noDescription")}</p>
+        <p class="muted">${repo.language || i18n.t("projects.noLanguage")}</p>
+        <a class="btn ghost" href="${repo.html_url}" target="_blank" rel="noreferrer">${i18n.t("projects.openGithub")}</a>
       `;
       cards.appendChild(article);
     });
   } catch (error) {
-    meta.textContent =
-      "Nao foi possivel carregar projetos agora. Verifique usuario ou limite da API.";
+    meta.textContent = i18n.t("projects.error");
     cards.innerHTML = "";
     console.error(error);
   }
@@ -172,8 +182,13 @@ function bootHome() {
   renderGithubProjects();
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", bootHome);
-} else {
+function startHome() {
   bootHome();
+  window.addEventListener("portfolio:contentrefresh", bootHome);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startHome);
+} else {
+  startHome();
 }

@@ -28,9 +28,29 @@ function initFooter() {
   }
 }
 
+function applyLanguage() {
+  if (!window.PortfolioI18n) return;
+  window.PortfolioI18n.renderLangSwitcher();
+  window.PortfolioI18n.applyStaticI18n();
+  if (window.PortfolioTheme) {
+    window.PortfolioTheme.renderThemeSwitcher();
+  }
+  window.dispatchEvent(new CustomEvent("portfolio:contentrefresh"));
+}
+
 function initCommon() {
   initMenu();
   initFooter();
+
+  if (window.PortfolioTheme) {
+    window.PortfolioTheme.initTheme();
+  }
+
+  applyLanguage();
+
+  window.addEventListener("portfolio:langchange", () => {
+    applyLanguage();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", initCommon);

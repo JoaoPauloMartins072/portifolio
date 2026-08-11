@@ -9,22 +9,42 @@
     />
     <title>Joao Paulo Martins | Portifolio</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script>
+      (function () {
+        var saved = localStorage.getItem("portfolio-theme");
+        var theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header">
       <nav class="container nav">
-        <a class="logo" href="#inicio">Meu Portifolio</a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
-          ☰
-        </button>
-        <ul class="menu" id="menu">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#experiencias">Experiencias</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#galeria">Galeria</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
+        <div class="nav-left">
+          <a class="logo" href="#inicio" data-i18n="brand">Meu Portifolio</a>
+          <div class="lang-switcher" id="lang-switcher" aria-label="Language"></div>
+        </div>
+
+        <div class="nav-right">
+          <ul class="menu" id="menu">
+            <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
+            <li><a href="#sobre" data-i18n="nav.about">Sobre</a></li>
+            <li><a href="#experiencias" data-i18n="nav.experience">Experiencias</a></li>
+            <li><a href="#projetos" data-i18n="nav.projects">Projetos</a></li>
+            <li><a href="#galeria" data-i18n="nav.gallery">Galeria</a></li>
+            <li><a href="#contato" data-i18n="nav.contact">Contato</a></li>
+          </ul>
+          <div class="theme-switcher" id="theme-switcher" aria-label="Theme"></div>
+          <button class="menu-toggle" id="menu-toggle" data-i18n-aria="nav.openMenu" aria-label="Abrir menu">
+            <span class="menu-toggle-lines" aria-hidden="true"></span>
+          </button>
+        </div>
       </nav>
     </header>
 
@@ -37,23 +57,21 @@
           experiencias que realmente ajudam quem usa.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="#projetos">Ver projetos</a>
-          <a class="btn ghost" href="#contato">Falar comigo</a>
+          <a class="btn primary" href="#projetos" data-i18n="hero.ctaProjects">Ver projetos</a>
+          <a class="btn ghost" href="#contato" data-i18n="hero.ctaContact">Falar comigo</a>
         </div>
       </section>
 
       <section id="sobre" class="container section">
-        <h2>Sobre mim</h2>
+        <h2 data-i18n="sections.about">Sobre mim</h2>
         <p id="about-text">
-          Sou apaixonado por tecnologia e aprendizado continuo. Gosto de criar
-          solucoes praticas, estudar novas ferramentas e transformar ideias em
-          produtos funcionais.
+          Sou apaixonado por tecnologia e aprendizado continuo.
         </p>
       </section>
 
       <section id="experiencias" class="container section">
-        <h2>Experiencias</h2>
-        <p class="muted">
+        <h2 data-i18n="sections.experience">Experiencias</h2>
+        <p class="muted" data-i18n="sections.experienceHint">
           Estrutura pronta para atualizar automaticamente por API quando a fonte
           estiver disponivel.
         </p>
@@ -61,33 +79,27 @@
       </section>
 
       <section id="projetos" class="container section">
-        <h2>Projetos</h2>
-        <p class="muted" id="projects-meta">
+        <h2 data-i18n="sections.projects">Projetos</h2>
+        <p class="muted" id="projects-meta" data-i18n="projects.loading">
           Carregando projetos do GitHub...
         </p>
         <div class="cards" id="project-cards"></div>
       </section>
 
       <section id="galeria" class="container section">
-        <h2>Galeria e hobbies</h2>
-        <p class="muted">Clique em uma categoria para abrir a pagina correspondente.</p>
+        <h2 data-i18n="sections.gallery">Galeria e hobbies</h2>
+        <p class="muted" data-i18n="sections.galleryHint">
+          Clique em uma categoria para abrir a pagina correspondente.
+        </p>
         <div class="gallery" id="gallery-grid"></div>
       </section>
 
       <section id="contato" class="container section">
-        <h2>Contato</h2>
-        <p>Vamos conversar sobre ideias, freelas e oportunidades.</p>
-        <ul class="contact-list" id="contact-list">
-          <li><a href="mailto:seuemail@exemplo.com">Email</a></li>
-          <li>
-            <a href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noreferrer"
-              >LinkedIn</a
-            >
-          </li>
-          <li>
-            <a href="https://github.com/seu-usuario" target="_blank" rel="noreferrer">GitHub</a>
-          </li>
-        </ul>
+        <h2 data-i18n="sections.contact">Contato</h2>
+        <p data-i18n="sections.contactText">
+          Vamos conversar sobre ideias, freelas e oportunidades.
+        </p>
+        <ul class="contact-list" id="contact-list"></ul>
       </section>
     </main>
 
@@ -96,6 +108,9 @@
     </footer>
 
     <script src="./config.js"></script>
+    <script src="./js/i18n.js"></script>
+    <script src="./js/i18n-runtime.js"></script>
+    <script src="./js/theme.js"></script>
     <script src="./js/common.js"></script>
     <script src="./script.js"></script>
   </body>

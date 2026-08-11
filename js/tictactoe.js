@@ -14,6 +14,10 @@ const winningCombos = [
   [2, 4, 6]
 ];
 
+function tt(key, vars) {
+  return window.PortfolioI18n?.t(key, vars) || key;
+}
+
 function getBoardElements() {
   return {
     boardElement: document.getElementById("board"),
@@ -84,23 +88,27 @@ function botMove() {
 
 function finishTurn() {
   const { statusElement } = getBoardElements();
+  if (!statusElement) return;
+
   const winner = checkWinner();
 
   if (winner) {
     statusElement.textContent =
       gameMode === "bot" && winner === "O"
-        ? "Bot venceu!"
-        : `Jogador ${winner} venceu!`;
+        ? tt("pages.botWinner")
+        : tt("pages.winner", { player: winner });
     gameActive = false;
   } else if (!board.includes("")) {
-    statusElement.textContent = "Empate!";
+    statusElement.textContent = tt("pages.draw");
     gameActive = false;
   } else {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusElement.textContent =
       gameMode === "bot" && currentPlayer === "O"
-        ? "Vez do bot..."
-        : `Vez do jogador ${currentPlayer}`;
+        ? tt("pages.turnBot")
+        : currentPlayer === "X"
+          ? tt("pages.turnX")
+          : tt("pages.turnO");
   }
 
   renderBoard();
@@ -129,7 +137,7 @@ function resetGame() {
   gameActive = true;
   const { statusElement } = getBoardElements();
   if (statusElement) {
-    statusElement.textContent = "Vez do jogador X";
+    statusElement.textContent = tt("pages.turnX");
   }
   renderBoard();
 }
@@ -142,20 +150,29 @@ function initTicTacToe() {
 
   renderBoard();
 
-  const { resetButton } = getBoardElements();
+  const { resetButton, statusElement } = getBoardElements();
+  if (statusElement) {
+    statusElement.textContent = tt("pages.turnX");
+  }
+
   if (resetButton) {
     resetButton.onclick = resetGame;
   }
 
   document.querySelectorAll("[data-mode]").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.onclick = () => {
       gameMode = button.dataset.mode;
       document.querySelectorAll("[data-mode]").forEach((item) => {
         item.classList.toggle("active", item.dataset.mode === gameMode);
       });
       resetGame();
-    });
+    };
   });
 }
 
 document.addEventListener("DOMContentLoaded", initTicTacToe);
+window.addEventListener("portfolio:contentrefresh", () => {
+  if (document.getElementById("board")) {
+    resetGame();
+  }
+});

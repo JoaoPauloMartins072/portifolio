@@ -5,34 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fotos | Joao Paulo Martins</title>
     <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        var saved = localStorage.getItem("portfolio-theme");
+        var theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header">
       <nav class="container nav">
-        <a class="logo" href="../index.html">Meu Portifolio</a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">☰</button>
-        <ul class="menu" id="menu">
-          <li><a href="../index.html#inicio">Inicio</a></li>
-          <li><a href="../index.html#sobre">Sobre</a></li>
-          <li><a href="../index.html#experiencias">Experiencias</a></li>
-          <li><a href="../index.html#projetos">Projetos</a></li>
-          <li><a href="../index.html#galeria">Galeria</a></li>
-          <li><a href="../index.html#contato">Contato</a></li>
-        </ul>
+        <div class="nav-left">
+          <a class="logo" href="../index.html" data-i18n="brand">Meu Portifolio</a>
+          <div class="lang-switcher" id="lang-switcher" aria-label="Language"></div>
+        </div>
+        <div class="nav-right">
+          <ul class="menu" id="menu">
+            <li><a href="../index.html#inicio" data-i18n="nav.home">Inicio</a></li>
+            <li><a href="../index.html#sobre" data-i18n="nav.about">Sobre</a></li>
+            <li><a href="../index.html#experiencias" data-i18n="nav.experience">Experiencias</a></li>
+            <li><a href="../index.html#projetos" data-i18n="nav.projects">Projetos</a></li>
+            <li><a href="../index.html#galeria" data-i18n="nav.gallery">Galeria</a></li>
+            <li><a href="../index.html#contato" data-i18n="nav.contact">Contato</a></li>
+          </ul>
+          <div class="theme-switcher" id="theme-switcher" aria-label="Theme"></div>
+          <button class="menu-toggle" id="menu-toggle" data-i18n-aria="nav.openMenu" aria-label="Abrir menu">
+            <span class="menu-toggle-lines" aria-hidden="true"></span>
+          </button>
+        </div>
       </nav>
     </header>
 
     <main class="container section page-view">
-      <a class="btn ghost" href="../index.html#galeria">← Voltar para galeria</a>
-
-      <h1 class="page-title">📷 Fotos</h1>
-      <p class="muted">Perfil privado de fotos.</p>
-
+      <a class="btn ghost" href="../index.html#galeria" data-i18n="pages.backGallery">Voltar para galeria</a>
+      <h1 class="page-title" data-i18n="pages.photosTitle">Fotos</h1>
+      <p class="muted" data-i18n="pages.photosIntro">Perfil privado de fotos.</p>
       <div class="panel-block">
-        <h3>Instagram privado</h3>
-        <p>Este perfil e privado. Solicite acesso para ver as fotos.</p>
+        <h3 data-i18n="pages.privateTitle">Instagram privado</h3>
+        <p data-i18n="pages.privateDesc">Este perfil e privado. Solicite acesso para ver as fotos.</p>
         <div class="panel-links">
-          <a id="link-photos" href="#" target="_blank" rel="noreferrer">Ir para o perfil</a>
+          <a id="link-photos" href="#" target="_blank" rel="noreferrer" data-i18n="pages.goProfile">Ir para o perfil</a>
         </div>
       </div>
     </main>
@@ -42,6 +61,9 @@
     </footer>
 
     <script src="../config.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/i18n-runtime.js"></script>
+    <script src="../js/theme.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/pages.js"></script>
   </body>

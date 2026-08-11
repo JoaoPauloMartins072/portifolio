@@ -38,12 +38,20 @@ Isso quebrava a home:
 
 Regra: **nao declarar `const config` no escopo global**. Usar `window.PORTFOLIO_CONFIG`.
 
+## i18n
+- Bandeiras no header: 🇧🇷 PT-BR e 🇮🇪 EN-IE
+- Arquivos: `js/i18n.js` + `js/i18n-runtime.js`
+- Idioma salvo em `localStorage` (`portfolio-lang`)
+- Funciona na home e nas paginas da galeria
+
 ## Estado atual (validado em tela)
 - Home renderiza nome, tagline, sobre, experiencias, contato
 - GitHub API carrega repositorios
 - Cards da galeria abrem paginas reais
 - Games renderiza IDs e jogo da velha jogavel
-- Testes: `36/36` passando (`npm test`)
+- Tema claro aplicado
+- Troca PT-BR / EN-IE funcionando
+- Testes: `42/42` passando (`npm test`)
 
 ## Pendencias
 - Jogo da cobrinha em Games

@@ -24,6 +24,9 @@ describe("smoke - paginas acessiveis", () => {
     "/config.js",
     "/script.js",
     "/js/common.js",
+    "/js/i18n.js",
+    "/js/i18n-runtime.js",
+    "/js/theme.js",
     "/js/pages.js",
     "/js/tictactoe.js"
   ];
@@ -114,6 +117,9 @@ describe("arquivos - estrutura esperada", () => {
     "config.js",
     "script.js",
     "js/common.js",
+    "js/i18n.js",
+    "js/i18n-runtime.js",
+    "js/theme.js",
     "js/pages.js",
     "js/tictactoe.js",
     "pages/games.html",
@@ -131,6 +137,32 @@ describe("arquivos - estrutura esperada", () => {
       assert.equal(fs.existsSync(full), true, `${relative} nao encontrado`);
     });
   }
+});
+
+describe("i18n - idiomas suportados", () => {
+  it("define pt-BR e en-IE", () => {
+    const code = fs.readFileSync(path.join(ROOT, "js/i18n.js"), "utf8");
+    assert.match(code, /"pt-BR"/);
+    assert.match(code, /"en-IE"/);
+    assert.match(code, /Hi, I'm/);
+    assert.match(code, /Ola, eu sou/);
+  });
+
+  it("home tem seletor de idioma e tema", async () => {
+    const { text } = await fetchText("/");
+    assert.match(text, /id="lang-switcher"/);
+    assert.match(text, /id="theme-switcher"/);
+    assert.match(text, /js\/i18n\.js/);
+    assert.match(text, /js\/theme\.js/);
+  });
+});
+
+describe("theme - claro e escuro", () => {
+  it("css define data-theme light e dark", () => {
+    const css = fs.readFileSync(path.join(ROOT, "styles.css"), "utf8");
+    assert.match(css, /data-theme="light"/);
+    assert.match(css, /data-theme="dark"/);
+  });
 });
 
 describe("js - nao redeclara const config global", () => {

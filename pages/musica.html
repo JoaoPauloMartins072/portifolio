@@ -5,40 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Musica | Joao Paulo Martins</title>
     <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        var saved = localStorage.getItem("portfolio-theme");
+        var theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header">
       <nav class="container nav">
-        <a class="logo" href="../index.html">Meu Portifolio</a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">☰</button>
-        <ul class="menu" id="menu">
-          <li><a href="../index.html#inicio">Inicio</a></li>
-          <li><a href="../index.html#sobre">Sobre</a></li>
-          <li><a href="../index.html#experiencias">Experiencias</a></li>
-          <li><a href="../index.html#projetos">Projetos</a></li>
-          <li><a href="../index.html#galeria">Galeria</a></li>
-          <li><a href="../index.html#contato">Contato</a></li>
-        </ul>
+        <div class="nav-left">
+          <a class="logo" href="../index.html" data-i18n="brand">Meu Portifolio</a>
+          <div class="lang-switcher" id="lang-switcher" aria-label="Language"></div>
+        </div>
+        <div class="nav-right">
+          <ul class="menu" id="menu">
+            <li><a href="../index.html#inicio" data-i18n="nav.home">Inicio</a></li>
+            <li><a href="../index.html#sobre" data-i18n="nav.about">Sobre</a></li>
+            <li><a href="../index.html#experiencias" data-i18n="nav.experience">Experiencias</a></li>
+            <li><a href="../index.html#projetos" data-i18n="nav.projects">Projetos</a></li>
+            <li><a href="../index.html#galeria" data-i18n="nav.gallery">Galeria</a></li>
+            <li><a href="../index.html#contato" data-i18n="nav.contact">Contato</a></li>
+          </ul>
+          <div class="theme-switcher" id="theme-switcher" aria-label="Theme"></div>
+          <button class="menu-toggle" id="menu-toggle" data-i18n-aria="nav.openMenu" aria-label="Abrir menu">
+            <span class="menu-toggle-lines" aria-hidden="true"></span>
+          </button>
+        </div>
       </nav>
     </header>
 
     <main class="container section page-view">
-      <a class="btn ghost" href="../index.html#galeria">← Voltar para galeria</a>
-
-      <h1 class="page-title">🎵 Musica</h1>
-      <p class="muted">Conteudo de baterista e playlist.</p>
-
+      <a class="btn ghost" href="../index.html#galeria" data-i18n="pages.backGallery">Voltar para galeria</a>
+      <h1 class="page-title" data-i18n="pages.musicTitle">Musica</h1>
+      <p class="muted" data-i18n="pages.musicIntro">Conteudo de baterista e playlist.</p>
       <div class="panel-block">
-        <h3>Baterista profissional</h3>
-        <p>Shows, bastidores e performance nos tambores.</p>
+        <h3 data-i18n="pages.drummerTitle">Baterista profissional</h3>
+        <p data-i18n="pages.drummerDesc">Shows, bastidores e performance nos tambores.</p>
         <div class="panel-links">
-          <a id="link-drummer" href="#" target="_blank" rel="noreferrer">Abrir Instagram</a>
+          <a id="link-drummer" href="#" target="_blank" rel="noreferrer" data-i18n="pages.openInstagram">Abrir Instagram</a>
         </div>
       </div>
-
       <div class="panel-block">
-        <h3>Playlist</h3>
-        <p class="muted">
+        <h3 data-i18n="pages.playlistTitle">Playlist</h3>
+        <p class="muted" data-i18n="pages.playlistHint">
           Integracao com Spotify sera adicionada na proxima etapa via embed/API.
         </p>
       </div>
@@ -49,6 +67,9 @@
     </footer>
 
     <script src="../config.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/i18n-runtime.js"></script>
+    <script src="../js/theme.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/pages.js"></script>
   </body>
