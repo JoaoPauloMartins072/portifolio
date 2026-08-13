@@ -31,13 +31,14 @@ window.PORTFOLIO_I18N = {
       hero: {
         hello: "Ola, eu sou",
         ctaProjects: "Ver projetos",
-        ctaContact: "Falar comigo"
+        ctaContact: "Falar comigo",
+        photoAlt: "Foto de perfil de {name}"
       },
       sections: {
         about: "Sobre mim",
         experience: "Experiencias",
         experienceHint:
-          "Estrutura pronta para atualizar automaticamente por API quando a fonte estiver disponivel.",
+          "Foto atualizada automaticamente pelo GitHub. Cargos vêm de uma fonte de dados unica, pronta para um backend no futuro.",
         projects: "Projetos",
         gallery: "Galeria e hobbies",
         galleryHint: "Clique em uma categoria para abrir a pagina correspondente.",
@@ -173,13 +174,14 @@ window.PORTFOLIO_I18N = {
       hero: {
         hello: "Hi, I'm",
         ctaProjects: "View projects",
-        ctaContact: "Get in touch"
+        ctaContact: "Get in touch",
+        photoAlt: "Profile photo of {name}"
       },
       sections: {
         about: "About me",
         experience: "Experience",
         experienceHint:
-          "Structure ready to update automatically via API when a source is available.",
+          "Photo updates automatically from GitHub. Roles come from a single data source, ready for a future backend.",
         projects: "Projects",
         gallery: "Gallery and hobbies",
         galleryHint: "Click a category to open its page.",

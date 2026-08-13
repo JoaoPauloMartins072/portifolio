@@ -25,6 +25,9 @@ Depois do merge, o site pode ir ao ar no GitHub Pages.
 - `index.html`: home com secoes principais
 - `styles.css`: tema e responsividade
 - `config.js`: dados pessoais e configuracoes de API
+- `data/experiences.json`: cargos (titulo, empresa, periodo) em PT e EN
+- `js/profile-source.js`: junta foto, titulo e cargos para a home renderizar
+- `scripts/sync-profile.js`: snapshot da foto do GitHub no deploy
 - `script.js`: renderizacao dinamica da home
 - `js/common.js`: menu e rodape compartilhados
 - `js/pages.js`: preenchimento dinamico das paginas

@@ -20,6 +20,9 @@ Portifolio pessoal leve (cartao de visita) para LinkedIn, com baixo custo de hos
 - `js/tictactoe.js`: logica do jogo da velha
 - `js/snake-engine.js` + `js/snake.js`: cobrinha
 - `js/spotify.js`: conversao de URL Spotify para embed
+- `js/profile-source.js`: junta foto/titulo/cargos de live.json, experiences.json e i18n
+- `data/experiences.json`: fonte unica dos cargos (pt-BR / en-IE)
+- `scripts/sync-profile.js`: snapshot da foto/nome do GitHub no deploy
 - `script.js`: render da home
 - `tests/smoke.test.js` e `tests/logic.test.js`: testes automatizados
 
@@ -57,8 +60,9 @@ Regra: **nao declarar `const config` no escopo global**. Usar `window.PORTFOLIO_
 Nao e preciso baixar o projeto, instalar Node local nem abrir VS Code/Cursor desktop.
 
 ## Estado atual
-- Home renderiza nome, tagline, sobre, experiencias, contato
+- Home renderiza nome, foto (GitHub), tagline, sobre, experiencias, contato
 - GitHub API carrega repositorios (sort `updated`, 6 no desktop / 4 no mobile)
+- Cargos vêm de `data/experiences.json` (prontos para um backend gravar `data/live.json`)
 - Cards da galeria abrem paginas reais
 - Games: IDs, jogo da velha e cobrinha
 - Musica: embed Spotify pronto; falta colar o link da playlist em `config.js`
@@ -67,7 +71,7 @@ Nao e preciso baixar o projeto, instalar Node local nem abrir VS Code/Cursor des
 
 ## Pendencias
 - Colar URL da playlist Spotify em `config.js` (`social.spotifyUrl`)
-- Experiencias via fonte automatica (LinkedIn API nao e aberta)
+- Experiencias via fonte unica (`data/experiences.json`); LinkedIn API nao e aberta para app pessoal
 - Ativar GitHub Pages uma vez nas settings do repo
 - Refino visual / SEO
 

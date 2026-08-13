@@ -10,8 +10,9 @@
 ## Etapa 2 - Dinamismo com APIs (em progresso)
 
 - Projetos via GitHub API (renderizacao automatica)
-- Conteudo de intro/sobre/contato via `config.js`
-- Experiencias por estrutura de dados local escalavel
+- Foto de perfil via GitHub (renderizacao automatica)
+- Conteudo de intro/sobre/contato via `config.js` e i18n
+- Experiencias por `data/experiences.json` (contrato pronto para backend)
 
 ## Etapa 3 - Galeria/Hobbies (em progresso)
 
@@ -38,6 +39,7 @@
 - Validacao e fallback para chamadas de API
 - Limites de requisicao e estados de erro
 - Estrategia para segredos (se houver backend futuro)
+- Contrato `data/live.json` para o frontend nao falar com LinkedIn/Instagram
 - Isolamento de configuracoes em arquivo unico
 
 ## Etapa 6 - Deploy e manutencao

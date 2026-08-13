@@ -14,6 +14,10 @@
       content="Desenvolvedor web com projetos dinamicos, galeria de hobbies e mini games."
     />
     <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://github.com/JoaoPauloMartins072.png"
+    />
     <title>Joao Paulo Martins | Portifolio</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
@@ -59,15 +63,28 @@
 
     <main>
       <section id="inicio" class="hero container">
-        <p class="tag" id="hero-tag">Desenvolvedor em evolucao</p>
-        <h1 id="hero-title">Ola, eu sou <span class="highlight">Seu Nome</span></h1>
-        <p class="hero-text" id="hero-text">
-          Construo projetos web com foco em interfaces simples, boas praticas e
-          experiencias que realmente ajudam quem usa.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#projetos" data-i18n="hero.ctaProjects">Ver projetos</a>
-          <a class="btn ghost" href="#contato" data-i18n="hero.ctaContact">Falar comigo</a>
+        <div class="hero-layout">
+          <div class="hero-photo-wrap" id="hero-photo-wrap" hidden>
+            <img
+              id="hero-photo"
+              alt=""
+              width="160"
+              height="160"
+              decoding="async"
+            />
+          </div>
+          <div class="hero-copy">
+            <p class="tag" id="hero-tag">Desenvolvedor em evolucao</p>
+            <h1 id="hero-title">Ola, eu sou <span class="highlight">Seu Nome</span></h1>
+            <p class="hero-text" id="hero-text">
+              Construo projetos web com foco em interfaces simples, boas praticas e
+              experiencias que realmente ajudam quem usa.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#projetos" data-i18n="hero.ctaProjects">Ver projetos</a>
+              <a class="btn ghost" href="#contato" data-i18n="hero.ctaContact">Falar comigo</a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -80,9 +97,8 @@
 
       <section id="experiencias" class="container section">
         <h2 data-i18n="sections.experience">Experiencias</h2>
-        <p class="muted" data-i18n="sections.experienceHint">
-          Estrutura pronta para atualizar automaticamente por API quando a fonte
-          estiver disponivel.
+        <p class="muted" id="experience-meta" data-i18n="sections.experienceHint">
+          Foto atualizada pelo GitHub. Cargos vêm de uma fonte de dados unica.
         </p>
         <div class="cards" id="experience-cards"></div>
       </section>
@@ -118,6 +134,7 @@
 
     <script src="./config.js"></script>
     <script src="./js/safe.js"></script>
+    <script src="./js/profile-source.js"></script>
     <script src="./js/i18n.js"></script>
     <script src="./js/i18n-runtime.js"></script>
     <script src="./js/theme.js"></script>

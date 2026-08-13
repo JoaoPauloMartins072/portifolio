@@ -33,6 +33,8 @@ describe("smoke - paginas acessiveis", () => {
     "/js/snake.js",
     "/js/spotify.js",
     "/js/safe.js",
+    "/js/profile-source.js",
+    "/data/experiences.json",
     "/favicon.svg"
   ];
 
@@ -51,8 +53,10 @@ describe("smoke - home e rotas da galeria", () => {
     assert.match(text, /id="galeria"/);
     assert.match(text, /id="gallery-grid"/);
     assert.match(text, /id="project-cards"/);
+    assert.match(text, /id="hero-photo"/);
     assert.match(text, /class="skip-link"/);
     assert.match(text, /js\/safe\.js/);
+    assert.match(text, /js\/profile-source\.js/);
   });
 
   it("script da home define rotas da galeria", () => {
@@ -120,10 +124,11 @@ describe("config - dados obrigatorios", () => {
     assert.equal(config.social.wildRiftId, "irlandes072#5847");
   });
 
-  it("define ordenacao e limite dos projetos do GitHub", () => {
+  it("define ordenacao, limite dos projetos e fonte da foto", () => {
     assert.equal(config.api.githubProjectsSort, "updated");
     assert.equal(config.api.githubProjectsLimit, 6);
     assert.equal(config.api.githubProjectsLimitMobile, 4);
+    assert.equal(config.profile.photoSource, "auto");
   });
 });
 
@@ -144,6 +149,9 @@ describe("arquivos - estrutura esperada", () => {
     "js/snake.js",
     "js/spotify.js",
     "js/safe.js",
+    "js/profile-source.js",
+    "scripts/sync-profile.js",
+    "data/experiences.json",
     "pages/games.html",
     "pages/musica.html",
     "pages/fotos.html",
