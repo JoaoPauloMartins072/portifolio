@@ -2,6 +2,22 @@ function getConfig() {
   return window.PORTFOLIO_CONFIG || {};
 }
 
+function escapeHtml(value) {
+  return window.PortfolioSafe?.escapeHtml(value) ?? "";
+}
+
+function safeHttpUrl(url) {
+  return window.PortfolioSafe?.isSafeHttpUrl(url) ? url : "";
+}
+
+function safeGithubUrl(url) {
+  return window.PortfolioSafe?.isSafeGithubUrl(url) ? url : "";
+}
+
+function safeEmail(email) {
+  return window.PortfolioSafe?.isSafeEmail(email) ? email : "";
+}
+
 function getI18n() {
   return window.PortfolioI18n;
 }
@@ -50,9 +66,9 @@ function renderExperiences() {
     const article = document.createElement("article");
     article.className = "card";
     article.innerHTML = `
-      <h3>${item.title || ""}</h3>
-      <p class="muted">${item.period || ""}</p>
-      <p>${item.description || ""}</p>
+      <h3>${escapeHtml(item.title || "")}</h3>
+      <p class="muted">${escapeHtml(item.period || "")}</p>
+      <p>${escapeHtml(item.description || "")}</p>
     `;
     container.appendChild(article);
   });
@@ -65,19 +81,23 @@ function renderContact() {
 
   const items = [];
 
-  if (contact.email) {
+  const email = safeEmail(contact.email);
+  const linkedin = safeHttpUrl(contact.linkedin);
+  const github = safeGithubUrl(contact.github);
+
+  if (email) {
     items.push(
-      `<li><a href="mailto:${contact.email}">Email: ${contact.email}</a></li>`
+      `<li><a href="mailto:${escapeHtml(email)}">Email: ${escapeHtml(email)}</a></li>`
     );
   }
-  if (contact.linkedin) {
+  if (linkedin) {
     items.push(
-      `<li><a href="${contact.linkedin}" target="_blank" rel="noreferrer">LinkedIn</a></li>`
+      `<li><a href="${escapeHtml(linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>`
     );
   }
-  if (contact.github) {
+  if (github) {
     items.push(
-      `<li><a href="${contact.github}" target="_blank" rel="noreferrer">GitHub</a></li>`
+      `<li><a href="${escapeHtml(github)}" target="_blank" rel="noopener noreferrer">GitHub</a></li>`
     );
   }
 
@@ -116,13 +136,32 @@ function renderGallery() {
   grid.innerHTML = categories
     .map(
       (item) => `
-        <a class="gallery-item" href="${item.href}">
-          <h3>${item.title}</h3>
-          <p class="muted">${item.subtitle}</p>
+        <a class="gallery-item" href="${escapeHtml(item.href)}">
+          <h3>${escapeHtml(item.title)}</h3>
+          <p class="muted">${escapeHtml(item.subtitle)}</p>
         </a>
       `
     )
     .join("");
+}
+
+function getProjectsLimit(api) {
+  const desktop = Number(api.githubProjectsLimit) || 6;
+  const mobile = Number(api.githubProjectsLimitMobile) || desktop;
+  const isMobile =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(max-width: 900px)").matches;
+  return isMobile ? mobile : desktop;
+}
+
+function sortGithubRepos(repos, sort) {
+  const list = Array.isArray(repos) ? repos.slice() : [];
+  if (sort === "stars") {
+    list.sort(
+      (a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0)
+    );
+  }
+  return list;
 }
 
 async function renderGithubProjects() {
@@ -131,7 +170,8 @@ async function renderGithubProjects() {
   const i18n = getI18n();
   const api = getConfig().api || {};
   const username = api.githubUsername;
-  const limit = api.githubProjectsLimit || 6;
+  const sort = api.githubProjectsSort === "stars" ? "stars" : "updated";
+  const limit = getProjectsLimit(api);
 
   if (!cards || !meta || !i18n) return;
 
@@ -144,26 +184,34 @@ async function renderGithubProjects() {
   meta.textContent = i18n.t("projects.loading");
 
   try {
+    const perPage = sort === "stars" ? 100 : limit;
     const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=${limit}`
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}`
     );
 
     if (!response.ok) {
       throw new Error(`GitHub API respondeu ${response.status}`);
     }
 
-    const repos = await response.json();
+    const payload = await response.json();
+    const repos = sortGithubRepos(payload, sort).slice(0, limit);
     meta.textContent = i18n.t("projects.loaded", { user: username });
     cards.innerHTML = "";
 
     repos.forEach((repo) => {
       const article = document.createElement("article");
       article.className = "card";
+      const repoUrl = safeGithubUrl(repo.html_url);
+      const openLabel = escapeHtml(i18n.t("projects.openGithub"));
       article.innerHTML = `
-        <h3>${repo.name}</h3>
-        <p>${repo.description || i18n.t("projects.noDescription")}</p>
-        <p class="muted">${repo.language || i18n.t("projects.noLanguage")}</p>
-        <a class="btn ghost" href="${repo.html_url}" target="_blank" rel="noreferrer">${i18n.t("projects.openGithub")}</a>
+        <h3>${escapeHtml(repo.name)}</h3>
+        <p>${escapeHtml(repo.description || i18n.t("projects.noDescription"))}</p>
+        <p class="muted">${escapeHtml(repo.language || i18n.t("projects.noLanguage"))}</p>
+        ${
+          repoUrl
+            ? `<a class="btn ghost" href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer">${openLabel}</a>`
+            : ""
+        }
       `;
       cards.appendChild(article);
     });

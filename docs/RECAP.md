@@ -1,26 +1,19 @@
-# Recapitulada - 11/08/2026
+# Recapitulada - 13/08/2026
 
 ## O que ja esta pronto
 1. Home minimalista com dados do Joao Paulo Martins
-2. Projetos dinamicos via GitHub API
+2. Projetos dinamicos via GitHub API (updated, 6 desktop / 4 mobile)
 3. Contato com `mailto` e links externos
 4. Galeria com navegacao por paginas reais
-5. Games com PSN/Wild Rift + jogo da velha (2P/bot)
-6. Testes automatizados smoke (`npm test`)
+5. Games com PSN/Wild Rift + jogo da velha (2P/bot) + cobrinha
+6. Embed Spotify na pagina Musica (aguarda o link da playlist)
+7. Workflow de GitHub Pages
+8. Testes automatizados (`npm test`)
 
-## O que estava quebrado e foi corrigido
-- Conflito de `const config` entre scripts
-- Home mostrando placeholders
-- Galeria sem cards
-- Contato sem dados reais
-- Projetos parados em loading
-
-## Validacao visual (browser)
-- Home: nome, tagline, sobre e experiencias ok
-- Projetos: repos do GitHub aparecendo
-- Games: IDs e tabuleiro funcionando (jogada X registrada)
+## Como trabalhar so pelo navegador
+O Cursor Cloud Agent edita o repositorio remoto. Voce descreve a mudanca no chat, revisa o PR no GitHub e faz merge. Nao precisa de IDE nem download.
 
 ## Proximos passos recomendados
-1. Cobrinha em `pages/games.html`
-2. Spotify embed em `pages/musica.html`
-3. Deploy free (Vercel/Netlify/GitHub Pages)
+1. Enviar o link da playlist Spotify no chat do agente
+2. Ativar GitHub Pages: Settings > Pages > GitHub Actions
+3. Refino visual / SEO

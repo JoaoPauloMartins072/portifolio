@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Games | Joao Paulo Martins</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script>
       (function () {
@@ -62,7 +63,7 @@
 
       <div class="panel-block">
         <h3 data-i18n="pages.miniGames">Mini games</h3>
-        <p class="muted" data-i18n="pages.miniGamesDesc">Jogo da velha com modo 2 jogadores ou vs bot.</p>
+        <p class="muted" data-i18n="pages.miniGamesDesc">Jogo da velha (2 jogadores ou vs bot) e cobrinha.</p>
         <div class="tictactoe-controls">
           <button class="btn ghost active" type="button" data-mode="pvp" data-i18n="pages.modePvp">2 jogadores</button>
           <button class="btn ghost" type="button" data-mode="bot" data-i18n="pages.modeBot">Vs bot</button>
@@ -73,6 +74,37 @@
           <button id="reset" class="btn ghost" type="button" data-i18n="pages.reset">Reiniciar</button>
         </div>
       </div>
+
+      <div class="panel-block">
+        <h3 data-i18n="pages.snakeTitle">Cobrinha</h3>
+        <p class="muted" data-i18n="pages.snakeDesc">Use as setas, WASD ou os botoes. No celular, deslize na tela.</p>
+        <div class="snake-hud">
+          <p><span data-i18n="pages.snakeScore">Pontos</span>: <strong id="snake-score">0</strong></p>
+          <p><span data-i18n="pages.snakeHigh">Recorde</span>: <strong id="snake-high">0</strong></p>
+        </div>
+        <div class="snake-game">
+          <canvas
+            id="snake-canvas"
+            width="360"
+            height="360"
+            data-i18n-aria="pages.snakeBoardLabel"
+            aria-label="Tabuleiro da cobrinha"
+          ></canvas>
+          <p id="snake-status" class="muted" data-i18n="pages.snakeReady">Pressione comecar para jogar.</p>
+          <div class="snake-actions">
+            <button id="snake-start" class="btn primary" type="button" data-i18n="pages.snakeStart">Comecar</button>
+            <button id="snake-pause" class="btn ghost" type="button" data-i18n="pages.snakePause">Pausar</button>
+          </div>
+          <div class="snake-pad" role="group" data-i18n-aria="pages.snakePadLabel" aria-label="Controle da cobrinha">
+            <button type="button" class="btn ghost snake-dir" data-dir="up">↑</button>
+            <div class="snake-pad-mid">
+              <button type="button" class="btn ghost snake-dir" data-dir="left">←</button>
+              <button type="button" class="btn ghost snake-dir" data-dir="right">→</button>
+            </div>
+            <button type="button" class="btn ghost snake-dir" data-dir="down">↓</button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -80,11 +112,14 @@
     </footer>
 
     <script src="../config.js"></script>
+    <script src="../js/safe.js"></script>
     <script src="../js/i18n.js"></script>
     <script src="../js/i18n-runtime.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/pages.js"></script>
     <script src="../js/tictactoe.js"></script>
+    <script src="../js/snake-engine.js"></script>
+    <script src="../js/snake.js"></script>
   </body>
 </html>

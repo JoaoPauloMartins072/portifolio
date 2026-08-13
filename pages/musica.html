@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Musica | Joao Paulo Martins</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script>
       (function () {
@@ -51,14 +52,26 @@
         <h3 data-i18n="pages.drummerTitle">Baterista profissional</h3>
         <p data-i18n="pages.drummerDesc">Shows, bastidores e performance nos tambores.</p>
         <div class="panel-links">
-          <a id="link-drummer" href="#" target="_blank" rel="noreferrer" data-i18n="pages.openInstagram">Abrir Instagram</a>
+          <a id="link-drummer" href="#" target="_blank" rel="noopener noreferrer" data-i18n="pages.openInstagram">Abrir Instagram</a>
         </div>
       </div>
       <div class="panel-block">
         <h3 data-i18n="pages.playlistTitle">Playlist</h3>
-        <p class="muted" data-i18n="pages.playlistHint">
-          Integracao com Spotify sera adicionada na proxima etapa via embed/API.
+        <p class="muted" data-i18n="pages.playlistHint">Ouca uma playlist no player do Spotify.</p>
+        <p id="spotify-missing" class="muted" hidden data-i18n="pages.playlistMissing">
+          Envie o link da playlist Spotify no chat do agente para conectar o player.
         </p>
+        <iframe
+          id="spotify-embed"
+          class="spotify-embed"
+          title="Spotify"
+          hidden
+          width="100%"
+          height="352"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
       </div>
     </main>
 
@@ -67,10 +80,12 @@
     </footer>
 
     <script src="../config.js"></script>
+    <script src="../js/safe.js"></script>
     <script src="../js/i18n.js"></script>
     <script src="../js/i18n-runtime.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/common.js"></script>
+    <script src="../js/spotify.js"></script>
     <script src="../js/pages.js"></script>
   </body>
 </html>

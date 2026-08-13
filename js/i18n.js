@@ -5,9 +5,14 @@ window.PORTFOLIO_I18N = {
     "pt-BR": {
       meta: {
         title: "Joao Paulo Martins | Portifolio",
-        htmlLang: "pt-BR"
+        htmlLang: "pt-BR",
+        description:
+          "Portifolio de Joao Paulo Martins: desenvolvimento web, APIs, projetos no GitHub, musica e mini games."
       },
       brand: "Meu Portifolio",
+      a11y: {
+        skip: "Pular para o conteudo"
+      },
       theme: {
         light: "Claro",
         dark: "Escuro",
@@ -62,7 +67,7 @@ window.PORTFOLIO_I18N = {
       ],
       gallery: {
         gamesTitle: "Games",
-        gamesSubtitle: "PSN, Wild Rift e mini games",
+        gamesSubtitle: "PSN, Wild Rift, velha e cobrinha",
         musicTitle: "Musica",
         musicSubtitle: "Baterista e playlist",
         photosTitle: "Fotos",
@@ -88,7 +93,7 @@ window.PORTFOLIO_I18N = {
         psnDesc: "Perfil de jogos no ecossistema PlayStation.",
         wildRiftDesc: "Perfil no League of Legends: Wild Rift.",
         miniGames: "Mini games",
-        miniGamesDesc: "Jogo da velha com modo 2 jogadores ou vs bot.",
+        miniGamesDesc: "Jogo da velha (2 jogadores ou vs bot) e cobrinha.",
         modePvp: "2 jogadores",
         modeBot: "Vs bot",
         reset: "Reiniciar",
@@ -99,14 +104,29 @@ window.PORTFOLIO_I18N = {
         winner: "Jogador {player} venceu!",
         botWinner: "Bot venceu!",
         draw: "Empate!",
+        snakeTitle: "Cobrinha",
+        snakeDesc: "Use as setas, WASD ou os botoes. No celular, deslize na tela.",
+        snakeScore: "Pontos",
+        snakeHigh: "Recorde",
+        snakeStart: "Comecar",
+        snakeRestart: "Jogar de novo",
+        snakePause: "Pausar",
+        snakeResume: "Continuar",
+        snakeReady: "Pressione comecar para jogar.",
+        snakePlaying: "Use as setas, WASD ou o controle.",
+        snakePaused: "Jogo pausado.",
+        snakeGameOver: "Fim de jogo. Pontos: {score}",
+        snakeBoardLabel: "Tabuleiro da cobrinha",
+        snakePadLabel: "Controle da cobrinha",
         musicTitle: "Musica",
         musicIntro: "Conteudo de baterista e playlist.",
         drummerTitle: "Baterista profissional",
         drummerDesc: "Shows, bastidores e performance nos tambores.",
         openInstagram: "Abrir Instagram",
         playlistTitle: "Playlist",
-        playlistHint:
-          "Integracao com Spotify sera adicionada na proxima etapa via embed/API.",
+        playlistHint: "Ouca uma playlist no player do Spotify.",
+        playlistMissing:
+          "Envie o link da playlist Spotify no chat do agente para conectar o player.",
         photosTitle: "Fotos",
         photosIntro: "Perfil privado de fotos.",
         privateTitle: "Instagram privado",
@@ -127,9 +147,14 @@ window.PORTFOLIO_I18N = {
     "en-IE": {
       meta: {
         title: "Joao Paulo Martins | Portfolio",
-        htmlLang: "en-IE"
+        htmlLang: "en-IE",
+        description:
+          "Portfolio of Joao Paulo Martins: web development, APIs, GitHub projects, music and mini games."
       },
       brand: "My Portfolio",
+      a11y: {
+        skip: "Skip to content"
+      },
       theme: {
         light: "Light",
         dark: "Dark",
@@ -184,7 +209,7 @@ window.PORTFOLIO_I18N = {
       ],
       gallery: {
         gamesTitle: "Games",
-        gamesSubtitle: "PSN, Wild Rift and mini games",
+        gamesSubtitle: "PSN, Wild Rift, tic-tac-toe and snake",
         musicTitle: "Music",
         musicSubtitle: "Drummer and playlist",
         photosTitle: "Photos",
@@ -209,7 +234,7 @@ window.PORTFOLIO_I18N = {
         psnDesc: "Gaming profile on the PlayStation ecosystem.",
         wildRiftDesc: "Profile on League of Legends: Wild Rift.",
         miniGames: "Mini games",
-        miniGamesDesc: "Tic-tac-toe with 2-player mode or vs bot.",
+        miniGamesDesc: "Tic-tac-toe (2 players or vs bot) and snake.",
         modePvp: "2 players",
         modeBot: "Vs bot",
         reset: "Restart",
@@ -220,14 +245,29 @@ window.PORTFOLIO_I18N = {
         winner: "Player {player} wins!",
         botWinner: "Bot wins!",
         draw: "Draw!",
+        snakeTitle: "Snake",
+        snakeDesc: "Use arrows, WASD or the buttons. On mobile, swipe the board.",
+        snakeScore: "Score",
+        snakeHigh: "High score",
+        snakeStart: "Start",
+        snakeRestart: "Play again",
+        snakePause: "Pause",
+        snakeResume: "Resume",
+        snakeReady: "Press start to play.",
+        snakePlaying: "Use arrows, WASD or the pad.",
+        snakePaused: "Game paused.",
+        snakeGameOver: "Game over. Score: {score}",
+        snakeBoardLabel: "Snake board",
+        snakePadLabel: "Snake controls",
         musicTitle: "Music",
         musicIntro: "Drummer content and playlist.",
         drummerTitle: "Professional drummer",
         drummerDesc: "Shows, behind the scenes and drum performances.",
         openInstagram: "Open Instagram",
         playlistTitle: "Playlist",
-        playlistHint:
-          "Spotify integration will be added next via embed/API.",
+        playlistHint: "Listen to a playlist in the Spotify player.",
+        playlistMissing:
+          "Send the Spotify playlist link in the agent chat so I can connect the player.",
         photosTitle: "Photos",
         photosIntro: "Private photos profile.",
         privateTitle: "Private Instagram",

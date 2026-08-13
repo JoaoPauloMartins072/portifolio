@@ -52,6 +52,16 @@ function applyStaticI18n() {
     document.title = dict.meta.title;
   }
 
+  const description = dict.meta?.description;
+  if (description) {
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", description);
+    const og = document.querySelector('meta[property="og:description"]');
+    if (og) og.setAttribute("content", description);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", dict.meta.title);
+  }
+
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     const translated = t(key);
