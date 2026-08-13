@@ -28,7 +28,10 @@ describe("smoke - paginas acessiveis", () => {
     "/js/i18n-runtime.js",
     "/js/theme.js",
     "/js/pages.js",
-    "/js/tictactoe.js"
+    "/js/tictactoe.js",
+    "/js/snake-engine.js",
+    "/js/snake.js",
+    "/js/spotify.js"
   ];
 
   for (const route of routes) {
@@ -56,18 +59,22 @@ describe("smoke - home e rotas da galeria", () => {
     assert.match(code, /\.\/pages\/codigos\.html/);
   });
 
-  it("pagina games tem tabuleiro e modos", async () => {
+  it("pagina games tem tabuleiro, modos e cobrinha", async () => {
     const { text } = await fetchText("/pages/games.html");
     assert.match(text, /id="board"/);
     assert.match(text, /data-mode="pvp"/);
     assert.match(text, /data-mode="bot"/);
     assert.match(text, /id="psn-id"/);
     assert.match(text, /id="wild-rift-id"/);
+    assert.match(text, /id="snake-canvas"/);
+    assert.match(text, /js\/snake\.js/);
   });
 
-  it("pagina musica aponta para instagram do baterista", async () => {
+  it("pagina musica aponta para instagram do baterista e spotify", async () => {
     const { text } = await fetchText("/pages/musica.html");
     assert.match(text, /id="link-drummer"/);
+    assert.match(text, /id="spotify-embed"/);
+    assert.match(text, /js\/spotify\.js/);
   });
 
   it("pagina codigos aponta para projetos e github", async () => {
@@ -108,6 +115,12 @@ describe("config - dados obrigatorios", () => {
     assert.equal(config.social.psnId, "Jonh-072");
     assert.equal(config.social.wildRiftId, "irlandes072#5847");
   });
+
+  it("define ordenacao e limite dos projetos do GitHub", () => {
+    assert.equal(config.api.githubProjectsSort, "updated");
+    assert.equal(config.api.githubProjectsLimit, 6);
+    assert.equal(config.api.githubProjectsLimitMobile, 4);
+  });
 });
 
 describe("arquivos - estrutura esperada", () => {
@@ -122,6 +135,9 @@ describe("arquivos - estrutura esperada", () => {
     "js/theme.js",
     "js/pages.js",
     "js/tictactoe.js",
+    "js/snake-engine.js",
+    "js/snake.js",
+    "js/spotify.js",
     "pages/games.html",
     "pages/musica.html",
     "pages/fotos.html",

@@ -26,7 +26,28 @@ function fillExternalLinks() {
   });
 }
 
+function fillSpotifyEmbed() {
+  const frame = document.getElementById("spotify-embed");
+  const missing = document.getElementById("spotify-missing");
+  if (!frame) return;
+
+  const url = window.PORTFOLIO_CONFIG?.social?.spotifyUrl || "";
+  const embed = window.PortfolioSpotify?.toSpotifyEmbed(url) || "";
+
+  if (embed) {
+    frame.src = embed;
+    frame.hidden = false;
+    if (missing) missing.hidden = true;
+    return;
+  }
+
+  frame.removeAttribute("src");
+  frame.hidden = true;
+  if (missing) missing.hidden = false;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   fillSocialIds();
   fillExternalLinks();
+  fillSpotifyEmbed();
 });

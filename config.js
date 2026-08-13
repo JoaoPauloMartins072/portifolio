@@ -10,12 +10,15 @@ window.PORTFOLIO_CONFIG = {
   },
   api: {
     githubUsername: "JoaoPauloMartins072",
-    githubProjectsLimit: 6
+    githubProjectsLimit: 6,
+    githubProjectsLimitMobile: 4,
+    githubProjectsSort: "updated"
   },
   social: {
     drummerInstagram: "https://www.instagram.com/joaopaulodrumss/",
     developerInstagram: "https://www.instagram.com/joaopaulodeveloper/",
     psnId: "Jonh-072",
-    wildRiftId: "irlandes072#5847"
+    wildRiftId: "irlandes072#5847",
+    spotifyUrl: ""
   }
 };

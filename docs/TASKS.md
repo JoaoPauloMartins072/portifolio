@@ -11,8 +11,8 @@
 
 - [x] Criar base para GitHub API
 - [x] Inserir usuario real do GitHub em `config.js`
-- [ ] Ajustar regra de ordenacao (updated/stars)
-- [ ] Definir quantidade ideal de cards no desktop e mobile
+- [x] Ajustar regra de ordenacao (updated/stars)
+- [x] Definir quantidade ideal de cards no desktop e mobile
 
 ## Sprint C - Experiencias atualizaveis
 
@@ -27,8 +27,8 @@
 - [x] Navegacao por paginas/rotas reais (`pages/*.html`)
 - [x] Adicionar perfis externos (PSN, Wild Rift, Instagram)
 - [x] Adicionar jogo da velha (2P e bot)
-- [ ] Adicionar jogo da cobrinha
-- [ ] Embed Spotify na pagina Musica
+- [x] Adicionar jogo da cobrinha
+- [x] Embed Spotify na pagina Musica
 
 ## Sprint QA
 

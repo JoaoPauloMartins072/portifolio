@@ -469,6 +469,64 @@ h1 {
   background: var(--cell-hover);
 }
 
+.snake-hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 8px 0 12px;
+}
+
+.snake-hud p {
+  margin: 0;
+}
+
+.snake-game {
+  max-width: 360px;
+}
+
+#snake-canvas {
+  display: block;
+  width: min(360px, 100%);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--cell-bg);
+  touch-action: none;
+}
+
+.snake-actions,
+.snake-pad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.snake-pad {
+  flex-direction: column;
+  align-items: center;
+  max-width: 220px;
+}
+
+.snake-pad-mid {
+  display: flex;
+  gap: 36px;
+}
+
+.snake-dir {
+  min-width: 48px;
+}
+
+.spotify-embed {
+  display: block;
+  width: 100%;
+  min-height: 352px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 12px;
+}
+
 .contact-list {
   margin: 0;
   padding-left: 18px;

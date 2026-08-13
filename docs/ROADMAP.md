@@ -22,8 +22,8 @@
   - `pages/codigos.html`
 - [x] Cards da galeria navegam para a pagina (sem scroll/painel)
 - [x] Games: PSN + Wild Rift + jogo da velha (2P / vs bot)
-- [ ] Games: jogo da cobrinha
-- [ ] Musica: Instagram baterista + Spotify embed
+- [x] Games: jogo da cobrinha
+- [x] Musica: Instagram baterista + Spotify embed
 - [x] Fotos: Instagram privado
 - [x] Codigos: atalho para projetos + Instagram dev
 
@@ -42,7 +42,7 @@
 
 ## Etapa 6 - Deploy e manutencao
 
-- Deploy estatico free
+- Deploy estatico free (GitHub Pages workflow pronto; ativar nas settings)
 - Checklist de performance
 - Checklist SEO basico
 - Playbook de atualizacao de dados

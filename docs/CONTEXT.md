@@ -5,21 +5,23 @@ Portifolio pessoal leve (cartao de visita) para LinkedIn, com baixo custo de hos
 
 ## Stack atual
 - HTML + CSS + JavaScript puro (sem framework)
-- Deploy estatico (Vercel/Netlify/GitHub Pages)
+- Deploy estatico (GitHub Pages / Vercel / Netlify)
 - Dados centrais em `config.js`
-- Testes smoke com Node (`npm test`)
+- Testes smoke + logica (`npm test`)
 
 ## Estrutura
 - `index.html`: home (intro, sobre, experiencias, projetos GitHub, galeria, contato)
-- `pages/games.html`: PSN, Wild Rift, jogo da velha (2P / bot)
-- `pages/musica.html`: Instagram baterista + placeholder Spotify
+- `pages/games.html`: PSN, Wild Rift, jogo da velha (2P / bot) e cobrinha
+- `pages/musica.html`: Instagram baterista + embed Spotify (via `social.spotifyUrl`)
 - `pages/fotos.html`: Instagram privado
 - `pages/codigos.html`: atalho para projetos + Instagram dev
 - `js/common.js`: menu + rodape
 - `js/pages.js`: preenchimento dinamico das paginas
 - `js/tictactoe.js`: logica do jogo da velha
+- `js/snake-engine.js` + `js/snake.js`: cobrinha
+- `js/spotify.js`: conversao de URL Spotify para embed
 - `script.js`: render da home
-- `tests/smoke.test.js`: testes automatizados
+- `tests/smoke.test.js` e `tests/logic.test.js`: testes automatizados
 
 ## Rotas da galeria
 Cards da home navegam para:
@@ -44,20 +46,30 @@ Regra: **nao declarar `const config` no escopo global**. Usar `window.PORTFOLIO_
 - Idioma salvo em `localStorage` (`portfolio-lang`)
 - Funciona na home e nas paginas da galeria
 
-## Estado atual (validado em tela)
+## Como continuar sem IDE (so pelo agente web)
+1. Abrir [cursor.com/agents](https://cursor.com/agents) no navegador
+2. Escolher o repositorio `JoaoPauloMartins072/portifolio`
+3. Escrever o pedido em portugues (ex.: "troca a playlist do Spotify", "muda a cor do tema")
+4. O agente edita, testa, faz commit/PR
+5. Revisar e mergear no GitHub pelo navegador
+6. O site publicado fica em GitHub Pages (depois de ativar Pages uma vez)
+
+Nao e preciso baixar o projeto, instalar Node local nem abrir VS Code/Cursor desktop.
+
+## Estado atual
 - Home renderiza nome, tagline, sobre, experiencias, contato
-- GitHub API carrega repositorios
+- GitHub API carrega repositorios (sort `updated`, 6 no desktop / 4 no mobile)
 - Cards da galeria abrem paginas reais
-- Games renderiza IDs e jogo da velha jogavel
-- Tema claro aplicado
-- Troca PT-BR / EN-IE funcionando
-- Testes: `42/42` passando (`npm test`)
+- Games: IDs, jogo da velha e cobrinha
+- Musica: embed Spotify pronto; falta colar o link da playlist em `config.js`
+- Tema claro/escuro e PT-BR / EN-IE
+- Testes: smoke + engine da cobrinha + conversao Spotify
 
 ## Pendencias
-- Jogo da cobrinha em Games
-- Embed Spotify em Musica
+- Colar URL da playlist Spotify em `config.js` (`social.spotifyUrl`)
 - Experiencias via fonte automatica (LinkedIn API nao e aberta)
-- Refino visual / SEO / deploy
+- Ativar GitHub Pages uma vez nas settings do repo
+- Refino visual / SEO
 
 ## Como rodar
 ```bash

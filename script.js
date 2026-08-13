@@ -125,13 +125,33 @@ function renderGallery() {
     .join("");
 }
 
+function getProjectsLimit(api) {
+  const desktop = Number(api.githubProjectsLimit) || 6;
+  const mobile = Number(api.githubProjectsLimitMobile) || desktop;
+  const isMobile =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(max-width: 900px)").matches;
+  return isMobile ? mobile : desktop;
+}
+
+function sortGithubRepos(repos, sort) {
+  const list = Array.isArray(repos) ? repos.slice() : [];
+  if (sort === "stars") {
+    list.sort(
+      (a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0)
+    );
+  }
+  return list;
+}
+
 async function renderGithubProjects() {
   const cards = document.getElementById("project-cards");
   const meta = document.getElementById("projects-meta");
   const i18n = getI18n();
   const api = getConfig().api || {};
   const username = api.githubUsername;
-  const limit = api.githubProjectsLimit || 6;
+  const sort = api.githubProjectsSort === "stars" ? "stars" : "updated";
+  const limit = getProjectsLimit(api);
 
   if (!cards || !meta || !i18n) return;
 
@@ -144,15 +164,17 @@ async function renderGithubProjects() {
   meta.textContent = i18n.t("projects.loading");
 
   try {
+    const perPage = sort === "stars" ? 100 : limit;
     const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=${limit}`
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}`
     );
 
     if (!response.ok) {
       throw new Error(`GitHub API respondeu ${response.status}`);
     }
 
-    const repos = await response.json();
+    const payload = await response.json();
+    const repos = sortGithubRepos(payload, sort).slice(0, limit);
     meta.textContent = i18n.t("projects.loaded", { user: username });
     cards.innerHTML = "";
 
