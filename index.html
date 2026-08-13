@@ -15,6 +15,9 @@
     />
     <meta property="og:type" content="website" />
     <title>Joao Paulo Martins | Portifolio</title>
+    <meta name="theme-color" content="#0f8f8a" />
+    <link rel="preconnect" href="https://api.github.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.github.com" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
     <script>
@@ -59,11 +62,11 @@
 
     <main>
       <section id="inicio" class="hero container">
-        <p class="tag" id="hero-tag">Desenvolvedor em evolucao</p>
-        <h1 id="hero-title">Ola, eu sou <span class="highlight">Seu Nome</span></h1>
+        <p class="tag" id="hero-tag">Desenvolvedor Web | APIs | JavaScript</p>
+        <h1 id="hero-title">Ola, eu sou <span class="highlight">Joao Paulo Martins</span></h1>
         <p class="hero-text" id="hero-text">
-          Construo projetos web com foco em interfaces simples, boas praticas e
-          experiencias que realmente ajudam quem usa.
+          Desenvolvo interfaces web modernas e integracoes com APIs com foco em
+          simplicidade, desempenho e boa experiencia de uso.
         </p>
         <div class="hero-actions">
           <a class="btn primary" href="#projetos" data-i18n="hero.ctaProjects">Ver projetos</a>
@@ -74,7 +77,12 @@
       <section id="sobre" class="container section">
         <h2 data-i18n="sections.about">Sobre mim</h2>
         <p id="about-text">
-          Sou apaixonado por tecnologia e aprendizado continuo.
+          Sou Joao Paulo Martins, desenvolvedor em constante evolucao, com foco
+          em construir projetos leves, dinamicos e com boa arquitetura. Tambem
+          sou baterista profissional, o que fortalece minha disciplina,
+          criatividade e trabalho em equipe. Gosto de transformar ideias em
+          experiencias digitais objetivas, unindo design minimalista, codigo
+          limpo e integracoes que mantem o portifolio sempre atualizado.
         </p>
       </section>
 
@@ -84,7 +92,18 @@
           Estrutura pronta para atualizar automaticamente por API quando a fonte
           estiver disponivel.
         </p>
-        <div class="cards" id="experience-cards"></div>
+        <div class="cards" id="experience-cards">
+          <article class="card">
+            <p class="card-kicker">2024 - Atual</p>
+            <h3>Freelancer Front-end</h3>
+            <p>Desenvolvimento de paginas e interfaces responsivas para pequenos negocios.</p>
+          </article>
+          <article class="card">
+            <p class="card-kicker">2023 - Atual</p>
+            <h3>Projetos de estudo</h3>
+            <p>Criacao de projetos pessoais para praticar JavaScript, APIs e design de interface.</p>
+          </article>
+        </div>
       </section>
 
       <section id="projetos" class="container section">
@@ -92,7 +111,12 @@
         <p class="muted" id="projects-meta" data-i18n="projects.loading">
           Carregando projetos do GitHub...
         </p>
-        <div class="cards" id="project-cards"></div>
+        <div class="cards" id="project-cards">
+          <article class="card card-skeleton" aria-hidden="true"></article>
+          <article class="card card-skeleton" aria-hidden="true"></article>
+          <article class="card card-skeleton" aria-hidden="true"></article>
+          <article class="card card-skeleton" aria-hidden="true"></article>
+        </div>
       </section>
 
       <section id="galeria" class="container section">
@@ -100,7 +124,28 @@
         <p class="muted" data-i18n="sections.galleryHint">
           Clique em uma categoria para abrir a pagina correspondente.
         </p>
-        <div class="gallery" id="gallery-grid"></div>
+        <div class="gallery" id="gallery-grid">
+          <a class="gallery-item" href="./pages/games.html">
+            <span class="gallery-mark" aria-hidden="true"></span>
+            <h3>Games</h3>
+            <p class="muted">PSN, Wild Rift, velha e cobrinha</p>
+          </a>
+          <a class="gallery-item" href="./pages/musica.html">
+            <span class="gallery-mark" aria-hidden="true"></span>
+            <h3>Musica</h3>
+            <p class="muted">Baterista e playlist</p>
+          </a>
+          <a class="gallery-item" href="./pages/fotos.html">
+            <span class="gallery-mark" aria-hidden="true"></span>
+            <h3>Fotos</h3>
+            <p class="muted">Instagram privado</p>
+          </a>
+          <a class="gallery-item" href="./pages/codigos.html">
+            <span class="gallery-mark" aria-hidden="true"></span>
+            <h3>Codigos</h3>
+            <p class="muted">GitHub e content dev</p>
+          </a>
+        </div>
       </section>
 
       <section id="contato" class="container section">
@@ -108,7 +153,11 @@
         <p data-i18n="sections.contactText">
           Vamos conversar sobre ideias, freelas e oportunidades.
         </p>
-        <ul class="contact-list" id="contact-list"></ul>
+        <ul class="contact-list" id="contact-list">
+          <li><a href="mailto:joaopaulo_072@outlook.com">Email: joaopaulo_072@outlook.com</a></li>
+          <li><a href="https://www.linkedin.com/in/jo%C3%A3o-paulo-martins-b0329b220" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/JoaoPauloMartins072" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
       </section>
     </main>
 
@@ -116,12 +165,12 @@
       <p>© <span id="year"></span> <span id="footer-name">Joao Paulo Martins</span>.</p>
     </footer>
 
-    <script src="./config.js"></script>
-    <script src="./js/safe.js"></script>
-    <script src="./js/i18n.js"></script>
-    <script src="./js/i18n-runtime.js"></script>
-    <script src="./js/theme.js"></script>
-    <script src="./js/common.js"></script>
-    <script src="./script.js"></script>
+    <script defer src="./config.js"></script>
+    <script defer src="./js/safe.js"></script>
+    <script defer src="./js/i18n.js"></script>
+    <script defer src="./js/i18n-runtime.js"></script>
+    <script defer src="./js/theme.js"></script>
+    <script defer src="./js/common.js"></script>
+    <script defer src="./script.js"></script>
   </body>
 </html>

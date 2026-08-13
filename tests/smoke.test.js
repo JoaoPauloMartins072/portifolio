@@ -53,6 +53,8 @@ describe("smoke - home e rotas da galeria", () => {
     assert.match(text, /id="project-cards"/);
     assert.match(text, /class="skip-link"/);
     assert.match(text, /js\/safe\.js/);
+    assert.match(text, /card-skeleton/);
+    assert.match(text, /rel="preconnect"/);
   });
 
   it("script da home define rotas da galeria", () => {

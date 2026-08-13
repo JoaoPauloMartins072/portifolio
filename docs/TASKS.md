@@ -40,7 +40,7 @@
 ## Sprint E - Qualidade final
 
 - [x] Revisao de seguranca (links, sanitizacao, superficie de API)
-- [ ] Revisao de performance (Lighthouse)
+- [x] Revisao de performance (Lighthouse)
 - [x] Revisao de responsividade final
 - [x] Checklist de publicacao
 
