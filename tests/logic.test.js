@@ -2,6 +2,7 @@ const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
 const snake = require("../js/snake-engine.js");
 const spotify = require("../js/spotify.js");
+const safe = require("../js/safe.js");
 
 describe("snake engine", () => {
   it("avanca a cabeca para a direita", () => {
@@ -110,5 +111,26 @@ describe("spotify embed", () => {
     assert.equal(spotify.toSpotifyEmbed(""), "");
     assert.equal(spotify.toSpotifyEmbed("https://example.com/playlist/x"), "");
     assert.equal(spotify.toSpotifyEmbed("not a url"), "");
+  });
+});
+
+describe("safe html e urls", () => {
+  it("escapa HTML perigoso", () => {
+    assert.equal(
+      safe.escapeHtml('<img src=x onerror="alert(1)">'),
+      "&lt;img src=x onerror=&quot;alert(1)&quot;&gt;"
+    );
+  });
+
+  it("aceita so http(s) e github.com", () => {
+    assert.equal(safe.isSafeHttpUrl("https://www.linkedin.com/in/test"), true);
+    assert.equal(safe.isSafeHttpUrl("javascript:alert(1)"), false);
+    assert.equal(safe.isSafeGithubUrl("https://github.com/JoaoPauloMartins072"), true);
+    assert.equal(safe.isSafeGithubUrl("https://evil.example/github.com"), false);
+  });
+
+  it("valida email simples", () => {
+    assert.equal(safe.isSafeEmail("joaopaulo_072@outlook.com"), true);
+    assert.equal(safe.isSafeEmail("not-an-email"), false);
   });
 });

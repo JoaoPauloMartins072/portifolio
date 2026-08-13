@@ -18,7 +18,7 @@
 
 - [ ] Definir fonte oficial das experiencias
 - [ ] Implementar ingestao automatica da fonte escolhida
-- [ ] Criar fallback local para quando API falhar
+- [x] Criar fallback local para quando API falhar
 - [ ] Padronizar formato de datas e cargos
 
 ## Sprint D - Galeria e hobbies
@@ -39,7 +39,15 @@
 
 ## Sprint E - Qualidade final
 
-- [ ] Revisao de seguranca (links, sanitizacao, superficie de API)
+- [x] Revisao de seguranca (links, sanitizacao, superficie de API)
 - [ ] Revisao de performance (Lighthouse)
-- [ ] Revisao de responsividade final
-- [ ] Checklist de publicacao
+- [x] Revisao de responsividade final
+- [x] Checklist de publicacao
+
+### Checklist de publicacao (navegador)
+
+1. Revisar o PR e fazer merge em `master`
+2. GitHub > Settings > Pages > Source: GitHub Actions
+3. Abrir `https://joaopaulomartins072.github.io/portifolio/`
+4. Enviar o link da playlist Spotify no chat do agente
+5. Conferir home, games, musica, tema e idioma no celular

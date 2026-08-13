@@ -32,6 +32,7 @@ describe("smoke - paginas acessiveis", () => {
     "/js/snake-engine.js",
     "/js/snake.js",
     "/js/spotify.js",
+    "/js/safe.js",
     "/favicon.svg"
   ];
 
@@ -50,6 +51,8 @@ describe("smoke - home e rotas da galeria", () => {
     assert.match(text, /id="galeria"/);
     assert.match(text, /id="gallery-grid"/);
     assert.match(text, /id="project-cards"/);
+    assert.match(text, /class="skip-link"/);
+    assert.match(text, /js\/safe\.js/);
   });
 
   it("script da home define rotas da galeria", () => {
@@ -140,6 +143,7 @@ describe("arquivos - estrutura esperada", () => {
     "js/snake-engine.js",
     "js/snake.js",
     "js/spotify.js",
+    "js/safe.js",
     "pages/games.html",
     "pages/musica.html",
     "pages/fotos.html",

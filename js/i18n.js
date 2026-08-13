@@ -5,9 +5,14 @@ window.PORTFOLIO_I18N = {
     "pt-BR": {
       meta: {
         title: "Joao Paulo Martins | Portifolio",
-        htmlLang: "pt-BR"
+        htmlLang: "pt-BR",
+        description:
+          "Portifolio de Joao Paulo Martins: desenvolvimento web, APIs, projetos no GitHub, musica e mini games."
       },
       brand: "Meu Portifolio",
+      a11y: {
+        skip: "Pular para o conteudo"
+      },
       theme: {
         light: "Claro",
         dark: "Escuro",
@@ -142,9 +147,14 @@ window.PORTFOLIO_I18N = {
     "en-IE": {
       meta: {
         title: "Joao Paulo Martins | Portfolio",
-        htmlLang: "en-IE"
+        htmlLang: "en-IE",
+        description:
+          "Portfolio of Joao Paulo Martins: web development, APIs, GitHub projects, music and mini games."
       },
       brand: "My Portfolio",
+      a11y: {
+        skip: "Skip to content"
+      },
       theme: {
         light: "Light",
         dark: "Dark",

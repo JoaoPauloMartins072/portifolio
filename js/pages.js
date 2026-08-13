@@ -20,8 +20,9 @@ function fillExternalLinks() {
 
   Object.entries(map).forEach(([id, href]) => {
     const el = document.getElementById(id);
-    if (el && href) {
+    if (el && window.PortfolioSafe?.isSafeHttpUrl(href)) {
       el.href = href;
+      el.rel = "noopener noreferrer";
     }
   });
 }
