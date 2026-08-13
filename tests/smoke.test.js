@@ -31,7 +31,8 @@ describe("smoke - paginas acessiveis", () => {
     "/js/tictactoe.js",
     "/js/snake-engine.js",
     "/js/snake.js",
-    "/js/spotify.js"
+    "/js/spotify.js",
+    "/favicon.svg"
   ];
 
   for (const route of routes) {
@@ -126,6 +127,7 @@ describe("config - dados obrigatorios", () => {
 describe("arquivos - estrutura esperada", () => {
   const expected = [
     "index.html",
+    "favicon.svg",
     "styles.css",
     "config.js",
     "script.js",

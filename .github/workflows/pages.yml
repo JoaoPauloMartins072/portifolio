@@ -34,7 +34,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp -a index.html styles.css config.js script.js .nojekyll _site/
+          cp -a index.html styles.css config.js script.js favicon.svg .nojekyll _site/
           cp -a js pages _site/
       - uses: actions/upload-pages-artifact@v3
         with:

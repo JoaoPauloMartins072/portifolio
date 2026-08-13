@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Games | Joao Paulo Martins</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script>
       (function () {
@@ -94,7 +95,7 @@
             <button id="snake-start" class="btn primary" type="button" data-i18n="pages.snakeStart">Comecar</button>
             <button id="snake-pause" class="btn ghost" type="button" data-i18n="pages.snakePause">Pausar</button>
           </div>
-          <div class="snake-pad" aria-hidden="true">
+          <div class="snake-pad" role="group" data-i18n-aria="pages.snakePadLabel" aria-label="Controle da cobrinha">
             <button type="button" class="btn ghost snake-dir" data-dir="up">↑</button>
             <div class="snake-pad-mid">
               <button type="button" class="btn ghost snake-dir" data-dir="left">←</button>
