@@ -1,6 +1,7 @@
 window.PORTFOLIO_CONFIG = {
   profile: {
-    name: "Joao Paulo Martins"
+    name: "Joao Paulo Martins",
+    photoSource: "auto"
   },
   contact: {
     email: "joaopaulo_072@outlook.com",

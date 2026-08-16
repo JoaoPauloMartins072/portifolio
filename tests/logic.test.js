@@ -133,4 +133,87 @@ describe("safe html e urls", () => {
     assert.equal(safe.isSafeEmail("joaopaulo_072@outlook.com"), true);
     assert.equal(safe.isSafeEmail("not-an-email"), false);
   });
+
+  it("aceita so imagens https de hosts conhecidos", () => {
+    assert.equal(
+      safe.isSafeImageUrl("https://github.com/JoaoPauloMartins072.png"),
+      true
+    );
+    assert.equal(
+      safe.isSafeImageUrl("https://avatars.githubusercontent.com/u/1?v=4"),
+      true
+    );
+    assert.equal(safe.isSafeImageUrl("https://evil.example/photo.png"), false);
+    assert.equal(safe.isSafeImageUrl("javascript:alert(1)"), false);
+    assert.equal(safe.isSafeImageUrl("./data/me.png"), true);
+    assert.equal(safe.isSafeImageUrl("./../secret.png"), false);
+  });
+});
+
+describe("fonte unica de perfil", () => {
+  const profile = require("../js/profile-source.js");
+
+  it("monta URL da foto do GitHub sem API", () => {
+    assert.equal(
+      profile.githubAvatarUrl("JoaoPauloMartins072", 240),
+      "https://github.com/JoaoPauloMartins072.png?size=240"
+    );
+  });
+
+  it("escolhe texto no idioma pedido", () => {
+    assert.equal(
+      profile.pickLocalized({ "pt-BR": "Atual", "en-IE": "Present" }, "en-IE"),
+      "Present"
+    );
+    assert.equal(profile.pickLocalized("Freelancer", "pt-BR"), "Freelancer");
+  });
+
+  it("prioriza live.json e cai para experiences.json e i18n", () => {
+    const dict = {
+      profile: { roleTag: "Dev local" },
+      experience: [{ title: "Fallback i18n", period: "2020" }]
+    };
+    const file = {
+      items: [
+        {
+          role: { "pt-BR": "Front-end", "en-IE": "Front-end" },
+          company: { "pt-BR": "Autonomo", "en-IE": "Freelance" },
+          period: { "pt-BR": "2024 - Atual", "en-IE": "2024 - Present" },
+          current: true
+        }
+      ]
+    };
+
+    const fromFile = profile.build({
+      config: { api: { githubUsername: "JoaoPauloMartins072" }, profile: { name: "Joao" } },
+      dict,
+      live: null,
+      experiences: file,
+      lang: "pt-BR"
+    });
+    assert.equal(fromFile.experiences[0].title, "Front-end");
+    assert.equal(fromFile.experiences[0].company, "Autonomo");
+    assert.equal(fromFile.photoOrigin, "github");
+    assert.match(fromFile.photoUrl, /github\.com\/JoaoPauloMartins072\.png/);
+
+    const fromLive = profile.build({
+      config: { profile: { photoSource: "auto", name: "Joao" } },
+      dict,
+      live: {
+        source: "linkedin",
+        name: "Joao Paulo",
+        headline: "Desenvolvedor Web",
+        photoUrl: "https://media.licdn.com/photo.jpg",
+        experiences: [
+          { role: "Engenheiro", company: "Empresa X", period: "2025" }
+        ]
+      },
+      experiences: file,
+      lang: "pt-BR"
+    });
+    assert.equal(fromLive.headline, "Desenvolvedor Web");
+    assert.equal(fromLive.photoOrigin, "linkedin");
+    assert.equal(fromLive.experiences[0].title, "Engenheiro");
+    assert.equal(fromLive.experiences[0].company, "Empresa X");
+  });
 });

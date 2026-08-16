@@ -333,6 +333,35 @@ html[data-theme="dark"] .theme-toggle-track {
   z-index: -1;
 }
 
+.hero-layout {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.hero-photo-wrap {
+  flex: 0 0 auto;
+}
+
+.hero-photo-wrap img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.hero-copy {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.card-current {
+  border-color: var(--primary);
+}
+
 .tag {
   display: inline-flex;
   align-items: center;
@@ -778,5 +807,16 @@ h1 {
 
   .lang-btn {
     padding: 5px;
+  }
+
+  .hero-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .hero-photo-wrap img {
+    width: 112px;
+    height: 112px;
   }
 }

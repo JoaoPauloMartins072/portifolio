@@ -1,0 +1,46 @@
+{
+  "source": "local",
+  "note": "Fonte unica dos cargos. Um backend futuro (LinkedIn) deve escrever o mesmo formato em data/live.json.",
+  "items": [
+    {
+      "id": "freelance-frontend",
+      "current": true,
+      "company": {
+        "pt-BR": "Autonomo",
+        "en-IE": "Freelance"
+      },
+      "role": {
+        "pt-BR": "Freelancer Front-end",
+        "en-IE": "Front-end Freelancer"
+      },
+      "period": {
+        "pt-BR": "2024 - Atual",
+        "en-IE": "2024 - Present"
+      },
+      "description": {
+        "pt-BR": "Desenvolvimento de paginas e interfaces responsivas para pequenos negocios.",
+        "en-IE": "Building responsive pages and interfaces for small businesses."
+      }
+    },
+    {
+      "id": "study-projects",
+      "current": false,
+      "company": {
+        "pt-BR": "Projetos pessoais",
+        "en-IE": "Personal projects"
+      },
+      "role": {
+        "pt-BR": "Projetos de estudo",
+        "en-IE": "Study projects"
+      },
+      "period": {
+        "pt-BR": "2023 - Atual",
+        "en-IE": "2023 - Present"
+      },
+      "description": {
+        "pt-BR": "Criacao de projetos pessoais para praticar JavaScript, APIs e design de interface.",
+        "en-IE": "Personal projects to practise JavaScript, APIs and interface design."
+      }
+    }
+  ]
+}

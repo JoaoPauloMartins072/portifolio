@@ -16,10 +16,11 @@
 
 ## Sprint C - Experiencias atualizaveis
 
-- [ ] Definir fonte oficial das experiencias
-- [ ] Implementar ingestao automatica da fonte escolhida
+- [x] Definir fonte oficial das experiencias (`data/experiences.json`)
+- [x] Implementar ingestao automatica da fonte escolhida (foto GitHub + JSON de cargos)
 - [x] Criar fallback local para quando API falhar
-- [ ] Padronizar formato de datas e cargos
+- [x] Padronizar formato de datas e cargos (role, company, period, description)
+- [ ] LinkedIn/Instagram so com backend OAuth (API nao e aberta para site estatico)
 
 ## Sprint D - Galeria e hobbies
 

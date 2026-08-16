@@ -2,13 +2,15 @@
 
 ## O que ja esta pronto
 1. Home minimalista com dados do Joao Paulo Martins
-2. Projetos dinamicos via GitHub API (updated, 6 desktop / 4 mobile)
-3. Contato com `mailto` e links externos
-4. Galeria com navegacao por paginas reais
-5. Games com PSN/Wild Rift + jogo da velha (2P/bot) + cobrinha
-6. Embed Spotify na pagina Musica (aguarda o link da playlist)
-7. Workflow de GitHub Pages
-8. Testes automatizados (`npm test`)
+2. Foto de perfil automatica via GitHub
+3. Projetos dinamicos via GitHub API (updated, 6 desktop / 4 mobile)
+4. Cargos via `data/experiences.json` (mesmo contrato de um backend futuro)
+5. Contato com `mailto` e links externos
+6. Galeria com navegacao por paginas reais
+7. Games com PSN/Wild Rift + jogo da velha (2P/bot) + cobrinha
+8. Embed Spotify na pagina Musica (aguarda o link da playlist)
+9. Workflow de GitHub Pages
+10. Testes automatizados (`npm test`)
 
 ## Como trabalhar so pelo navegador
 O Cursor Cloud Agent edita o repositorio remoto. Voce descreve a mudanca no chat, revisa o PR no GitHub e faz merge. Nao precisa de IDE nem download.

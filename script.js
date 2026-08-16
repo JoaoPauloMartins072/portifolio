@@ -22,21 +22,62 @@ function getI18n() {
   return window.PortfolioI18n;
 }
 
-function applyProfileContent() {
+let remoteProfile = { live: null, experiences: null, loaded: false };
+let remoteProfilePromise = null;
+
+async function fetchJson(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (_error) {
+    return null;
+  }
+}
+
+async function ensureRemoteProfile() {
+  if (remoteProfile.loaded) return remoteProfile;
+  if (!remoteProfilePromise) {
+    remoteProfilePromise = Promise.all([
+      fetchJson("./data/live.json"),
+      fetchJson("./data/experiences.json")
+    ]).then(([live, experiences]) => {
+      remoteProfile = { live, experiences, loaded: true };
+      return remoteProfile;
+    });
+  }
+  return remoteProfilePromise;
+}
+
+function buildViewProfile() {
+  const i18n = getI18n();
+  const builder = window.PortfolioProfile;
+  if (!i18n || !builder) return null;
+  return builder.build({
+    config: getConfig(),
+    dict: i18n.getDict(),
+    live: remoteProfile.live,
+    experiences: remoteProfile.experiences,
+    lang: i18n.getCurrentLang()
+  });
+}
+
+function applyProfileContent(view) {
   const i18n = getI18n();
   if (!i18n) return;
 
   const dict = i18n.getDict();
   const profile = dict.profile || {};
-  const name = getConfig().profile?.name || "Joao Paulo Martins";
+  const name = view?.name || getConfig().profile?.name || "Joao Paulo Martins";
+  const headline = view?.headline || profile.roleTag || "";
 
   const heroTag = document.getElementById("hero-tag");
   const heroTitle = document.getElementById("hero-title");
   const heroText = document.getElementById("hero-text");
   const aboutText = document.getElementById("about-text");
 
-  if (heroTag && profile.roleTag) {
-    heroTag.textContent = profile.roleTag;
+  if (heroTag && headline) {
+    heroTag.textContent = headline;
   }
 
   if (heroTitle) {
@@ -52,22 +93,54 @@ function applyProfileContent() {
   }
 }
 
-function renderExperiences() {
+function renderHeroPhoto(view) {
+  const wrap = document.getElementById("hero-photo-wrap");
+  const img = document.getElementById("hero-photo");
+  const i18n = getI18n();
+  if (!wrap || !img) return;
+
+  const photoUrl = window.PortfolioSafe?.isSafeImageUrl(view?.photoUrl)
+    ? view.photoUrl
+    : "";
+
+  if (!photoUrl) {
+    wrap.hidden = true;
+    img.removeAttribute("src");
+    img.alt = "";
+    return;
+  }
+
+  const name = view?.name || getConfig().profile?.name || "";
+  img.alt = i18n ? i18n.t("hero.photoAlt", { name }) : name;
+  img.src = photoUrl;
+  wrap.hidden = false;
+  img.onerror = () => {
+    wrap.hidden = true;
+    img.removeAttribute("src");
+  };
+}
+
+function experienceMetaLine(item) {
+  const parts = [item.company, item.period].filter(Boolean);
+  return parts.join(" · ");
+}
+
+function renderExperiences(view) {
   const container = document.getElementById("experience-cards");
   const i18n = getI18n();
   if (!container || !i18n) return;
 
-  const experiences = Array.isArray(i18n.getDict().experience)
-    ? i18n.getDict().experience
-    : [];
+  const experiences = Array.isArray(view?.experiences) ? view.experiences : [];
   container.innerHTML = "";
 
   experiences.forEach((item) => {
     const article = document.createElement("article");
-    article.className = "card";
+    article.className = item.current ? "card card-current" : "card";
+    const meta = experienceMetaLine(item);
     article.innerHTML = `
       <p class="card-kicker">${escapeHtml(item.period || "")}</p>
       <h3>${escapeHtml(item.title || "")}</h3>
+      ${meta ? `<p class="muted">${escapeHtml(meta)}</p>` : ""}
       <p>${escapeHtml(item.description || "")}</p>
     `;
     container.appendChild(article);
@@ -240,9 +313,12 @@ async function renderGithubProjects() {
   }
 }
 
-function bootHome() {
-  applyProfileContent();
-  renderExperiences();
+async function bootHome() {
+  await ensureRemoteProfile();
+  const view = buildViewProfile();
+  applyProfileContent(view);
+  renderHeroPhoto(view);
+  renderExperiences(view);
   renderContact();
   renderGallery();
   renderGithubProjects();
