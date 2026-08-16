@@ -17,13 +17,6 @@
               ? "dark"
               : "light";
         document.documentElement.setAttribute("data-theme", theme);
-        
-        var savedColor = localStorage.getItem("portfolio-color");
-        var color =
-          savedColor === "red" || savedColor === "green" || savedColor === "blue"
-            ? savedColor
-            : "red";
-        document.documentElement.setAttribute("data-color", color);
       })();
     </script>
   </head>
@@ -43,8 +36,7 @@
             <li><a href="../index.html#galeria" data-i18n="nav.gallery">Galeria</a></li>
             <li><a href="../index.html#contato" data-i18n="nav.contact">Contato</a></li>
           </ul>
-          <div class="mode-switcher" id="mode-switcher" aria-label="Dark/Light Mode"></div>
-          <div class="theme-switcher" id="theme-switcher" aria-label="RGB Color"></div>
+          <div class="theme-switcher" id="theme-switcher" aria-label="Theme"></div>
           <button class="menu-toggle" id="menu-toggle" data-i18n-aria="nav.openMenu" aria-label="Abrir menu">
             <span class="menu-toggle-lines" aria-hidden="true"></span>
           </button>

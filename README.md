@@ -20,29 +20,13 @@ Nao precisa de IDE nem download:
 
 Depois do merge, o site pode ir ao ar no GitHub Pages.
 
-## Sistema de Temas RGB 🎨
-
-O portifolio conta com um **sistema de temas neon RGB** inspirado em carros de corrida! 🏎️
-
-### Recursos:
-- **6 combinações visuais**: 3 cores (R/G/B) × 2 modos (claro/escuro)
-- **Cores neon vibrantes**: Vermelho, Verde e Azul com efeitos de brilho
-- **Controles independentes**: 
-  - Botão esquerdo: Alterna modo claro/escuro
-  - Botão direito: Cicla entre cores R → G → B
-- **Efeitos aplicados em**: texto destacado, botões, links, cards, jogos
-- **Persistência**: Preferências salvas no localStorage
-
-📖 Veja mais em [`docs/RGB-THEME.md`](docs/RGB-THEME.md)
-
 ## Estrutura atual
 
 - `index.html`: home com secoes principais
-- `styles.css`: **sistema de temas RGB** e responsividade
+- `styles.css`: tema e responsividade
 - `config.js`: dados pessoais e configuracoes de API
 - `script.js`: renderizacao dinamica da home
 - `js/common.js`: menu e rodape compartilhados
-- `js/theme.js`: **sistema de temas RGB neon**
 - `js/pages.js`: preenchimento dinamico das paginas
 - `js/tictactoe.js`: jogo da velha (2P / bot)
 - `js/snake-engine.js` + `js/snake.js`: cobrinha
@@ -54,7 +38,6 @@ O portifolio conta com um **sistema de temas neon RGB** inspirado em carros de c
 - `docs/ROADMAP.md`: fases do projeto
 - `docs/TASKS.md`: backlog por sprint
 - `docs/API-INTEGRATIONS.md`: estrategia de APIs e limites reais
-- `docs/RGB-THEME.md`: **documentacao do sistema de temas RGB**
 
 ## Rodar local (opcional)
 

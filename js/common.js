@@ -33,7 +33,6 @@ function applyLanguage() {
   window.PortfolioI18n.renderLangSwitcher();
   window.PortfolioI18n.applyStaticI18n();
   if (window.PortfolioTheme) {
-    window.PortfolioTheme.renderModeSwitcher();
     window.PortfolioTheme.renderThemeSwitcher();
   }
   window.dispatchEvent(new CustomEvent("portfolio:contentrefresh"));
