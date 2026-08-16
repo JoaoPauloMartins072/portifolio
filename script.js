@@ -40,7 +40,7 @@ function applyProfileContent() {
   }
 
   if (heroTitle) {
-    heroTitle.innerHTML = `${i18n.t("hero.hello")} <span class="highlight">${name}</span>`;
+    heroTitle.innerHTML = `${escapeHtml(i18n.t("hero.hello"))} <span class="highlight">${escapeHtml(name)}</span>`;
   }
 
   if (heroText && profile.intro) {
@@ -66,8 +66,8 @@ function renderExperiences() {
     const article = document.createElement("article");
     article.className = "card";
     article.innerHTML = `
+      <p class="card-kicker">${escapeHtml(item.period || "")}</p>
       <h3>${escapeHtml(item.title || "")}</h3>
-      <p class="muted">${escapeHtml(item.period || "")}</p>
       <p>${escapeHtml(item.description || "")}</p>
     `;
     container.appendChild(article);
@@ -104,6 +104,19 @@ function renderContact() {
   list.innerHTML = items.join("");
 }
 
+function galleryMark(kind) {
+  const icons = {
+    games:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="11" rx="3"/><path d="M8 13h3M9.5 11.5v3M16 12.5h.01M18 14.5h.01" stroke-linecap="round"/></svg>',
+    music:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V6l12-2v12"/><circle cx="7" cy="18" r="2.5"/><circle cx="19" cy="16" r="2.5"/></svg>',
+    photos:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 15l4.5-4.5 3.5 3.5 2.5-2.5L21 17"/><circle cx="9" cy="10" r="1.2"/></svg>',
+    code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 8 4 12l4 4M16 8l4 4-4 4M13 5l-2 14"/></svg>'
+  };
+  return `<span class="gallery-mark" aria-hidden="true">${icons[kind] || ""}</span>`;
+}
+
 function renderGallery() {
   const grid = document.getElementById("gallery-grid");
   const i18n = getI18n();
@@ -114,22 +127,26 @@ function renderGallery() {
     {
       href: "./pages/games.html",
       title: g.gamesTitle || "Games",
-      subtitle: g.gamesSubtitle || ""
+      subtitle: g.gamesSubtitle || "",
+      mark: "games"
     },
     {
       href: "./pages/musica.html",
       title: g.musicTitle || "Music",
-      subtitle: g.musicSubtitle || ""
+      subtitle: g.musicSubtitle || "",
+      mark: "music"
     },
     {
       href: "./pages/fotos.html",
       title: g.photosTitle || "Photos",
-      subtitle: g.photosSubtitle || ""
+      subtitle: g.photosSubtitle || "",
+      mark: "photos"
     },
     {
       href: "./pages/codigos.html",
       title: g.codeTitle || "Code",
-      subtitle: g.codeSubtitle || ""
+      subtitle: g.codeSubtitle || "",
+      mark: "code"
     }
   ];
 
@@ -137,6 +154,7 @@ function renderGallery() {
     .map(
       (item) => `
         <a class="gallery-item" href="${escapeHtml(item.href)}">
+          ${galleryMark(item.mark)}
           <h3>${escapeHtml(item.title)}</h3>
           <p class="muted">${escapeHtml(item.subtitle)}</p>
         </a>
@@ -206,7 +224,7 @@ async function renderGithubProjects() {
       article.innerHTML = `
         <h3>${escapeHtml(repo.name)}</h3>
         <p>${escapeHtml(repo.description || i18n.t("projects.noDescription"))}</p>
-        <p class="muted">${escapeHtml(repo.language || i18n.t("projects.noLanguage"))}</p>
+        <p class="card-badge">${escapeHtml(repo.language || i18n.t("projects.noLanguage"))}</p>
         ${
           repoUrl
             ? `<a class="btn ghost" href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer">${openLabel}</a>`
