@@ -1,46 +1,150 @@
+/* RGB Neon Theme System - Inspired by racing car lights */
+
+/* Light Mode + Red Neon */
 :root,
-html[data-theme="light"] {
-  --bg: #f4f8fb;
-  --bg-soft: #e8f3f8;
+html[data-theme="light"][data-color="red"],
+html[data-theme="light"]:not([data-color]) {
+  --bg: #ffffff;
+  --bg-soft: #f8f8f8;
   --card: #ffffff;
-  --text: #16324f;
-  --muted: #5b738a;
-  --primary: #0f8f8a;
-  --primary-strong: #0b6f6b;
-  --border: #d7e4ee;
-  --shadow: 0 10px 30px rgba(22, 50, 79, 0.08);
-  --header-bg: rgba(255, 255, 255, 0.85);
+  --text: #000000;
+  --muted: #666666;
+  --primary: #ff0000;
+  --primary-strong: #ff0000;
+  --neon-glow: #ff0000;
+  --border: #e0e0e0;
+  --shadow: 0 0 20px rgba(255, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.05);
+  --header-bg: rgba(255, 255, 255, 0.95);
   --menu-bg: #ffffff;
-  --cell-bg: #f7fbfd;
-  --cell-hover: #eef8f8;
-  --glow-a: rgba(15, 143, 138, 0.14);
-  --glow-b: rgba(56, 130, 200, 0.12);
-  --bg-top: #f8fcff;
-  --footer-bg: rgba(255, 255, 255, 0.5);
+  --cell-bg: #fafafa;
+  --cell-hover: #fff5f5;
+  --glow-a: rgba(255, 0, 0, 0.15);
+  --glow-b: rgba(255, 0, 0, 0.08);
+  --bg-top: #ffffff;
+  --footer-bg: rgba(255, 255, 255, 0.8);
   --btn-primary-text: #ffffff;
-  --active-soft: rgba(15, 143, 138, 0.1);
+  --active-soft: rgba(255, 0, 0, 0.1);
 }
 
-html[data-theme="dark"] {
-  --bg: #0f172a;
-  --bg-soft: #111827;
-  --card: #152033;
-  --text: #e8eef7;
-  --muted: #9db0c7;
-  --primary: #2dd4bf;
-  --primary-strong: #5eead4;
-  --border: #243247;
-  --shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-  --header-bg: rgba(11, 18, 34, 0.9);
-  --menu-bg: #152033;
-  --cell-bg: #0b1325;
-  --cell-hover: #17253a;
-  --glow-a: rgba(45, 212, 191, 0.12);
-  --glow-b: rgba(56, 130, 200, 0.1);
-  --bg-top: #0b1222;
-  --footer-bg: rgba(11, 18, 34, 0.7);
-  --btn-primary-text: #042f2e;
-  --active-soft: rgba(45, 212, 191, 0.12);
+/* Light Mode + Green Neon */
+html[data-theme="light"][data-color="green"] {
+  --bg: #ffffff;
+  --bg-soft: #f8f8f8;
+  --card: #ffffff;
+  --text: #000000;
+  --muted: #666666;
+  --primary: #00ff00;
+  --primary-strong: #00ff00;
+  --neon-glow: #00ff00;
+  --border: #e0e0e0;
+  --shadow: 0 0 20px rgba(0, 255, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.05);
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --menu-bg: #ffffff;
+  --cell-bg: #fafafa;
+  --cell-hover: #f5fff5;
+  --glow-a: rgba(0, 255, 0, 0.15);
+  --glow-b: rgba(0, 255, 0, 0.08);
+  --bg-top: #ffffff;
+  --footer-bg: rgba(255, 255, 255, 0.8);
+  --btn-primary-text: #ffffff;
+  --active-soft: rgba(0, 255, 0, 0.1);
+}
+
+/* Light Mode + Blue Neon */
+html[data-theme="light"][data-color="blue"] {
+  --bg: #ffffff;
+  --bg-soft: #f8f8f8;
+  --card: #ffffff;
+  --text: #000000;
+  --muted: #666666;
+  --primary: #0000ff;
+  --primary-strong: #0000ff;
+  --neon-glow: #0000ff;
+  --border: #e0e0e0;
+  --shadow: 0 0 20px rgba(0, 0, 255, 0.15), 0 4px 10px rgba(0, 0, 0, 0.05);
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --menu-bg: #ffffff;
+  --cell-bg: #fafafa;
+  --cell-hover: #f5f5ff;
+  --glow-a: rgba(0, 0, 255, 0.15);
+  --glow-b: rgba(0, 0, 255, 0.08);
+  --bg-top: #ffffff;
+  --footer-bg: rgba(255, 255, 255, 0.8);
+  --btn-primary-text: #ffffff;
+  --active-soft: rgba(0, 0, 255, 0.1);
+}
+
+/* Dark Mode + Red Neon */
+html[data-theme="dark"][data-color="red"],
+html[data-theme="dark"]:not([data-color]) {
+  --bg: #000000;
+  --bg-soft: #0a0a0a;
+  --card: #0f0f0f;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+  --primary: #ff0000;
+  --primary-strong: #ff3333;
+  --neon-glow: #ff0000;
+  --border: #1a1a1a;
+  --shadow: 0 0 30px rgba(255, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.6);
+  --header-bg: rgba(0, 0, 0, 0.95);
+  --menu-bg: #0f0f0f;
+  --cell-bg: #050505;
+  --cell-hover: #1a0000;
+  --glow-a: rgba(255, 0, 0, 0.25);
+  --glow-b: rgba(255, 0, 0, 0.15);
+  --bg-top: #000000;
+  --footer-bg: rgba(0, 0, 0, 0.9);
+  --btn-primary-text: #000000;
+  --active-soft: rgba(255, 0, 0, 0.2);
+}
+
+/* Dark Mode + Green Neon */
+html[data-theme="dark"][data-color="green"] {
+  --bg: #000000;
+  --bg-soft: #0a0a0a;
+  --card: #0f0f0f;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+  --primary: #00ff00;
+  --primary-strong: #33ff33;
+  --neon-glow: #00ff00;
+  --border: #1a1a1a;
+  --shadow: 0 0 30px rgba(0, 255, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.6);
+  --header-bg: rgba(0, 0, 0, 0.95);
+  --menu-bg: #0f0f0f;
+  --cell-bg: #050505;
+  --cell-hover: #001a00;
+  --glow-a: rgba(0, 255, 0, 0.25);
+  --glow-b: rgba(0, 255, 0, 0.15);
+  --bg-top: #000000;
+  --footer-bg: rgba(0, 0, 0, 0.9);
+  --btn-primary-text: #000000;
+  --active-soft: rgba(0, 255, 0, 0.2);
+}
+
+/* Dark Mode + Blue Neon */
+html[data-theme="dark"][data-color="blue"] {
+  --bg: #000000;
+  --bg-soft: #0a0a0a;
+  --card: #0f0f0f;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+  --primary: #0000ff;
+  --primary-strong: #3333ff;
+  --neon-glow: #0000ff;
+  --border: #1a1a1a;
+  --shadow: 0 0 30px rgba(0, 0, 255, 0.3), 0 8px 20px rgba(0, 0, 0, 0.6);
+  --header-bg: rgba(0, 0, 0, 0.95);
+  --menu-bg: #0f0f0f;
+  --cell-bg: #050505;
+  --cell-hover: #00001a;
+  --glow-a: rgba(0, 0, 255, 0.25);
+  --glow-b: rgba(0, 0, 255, 0.15);
+  --bg-top: #000000;
+  --footer-bg: rgba(0, 0, 0, 0.9);
+  --btn-primary-text: #000000;
+  --active-soft: rgba(0, 0, 255, 0.2);
 }
 
 * {
@@ -116,7 +220,8 @@ body {
 }
 
 .lang-switcher,
-.theme-switcher {
+.theme-switcher,
+.mode-switcher {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -141,6 +246,8 @@ body {
   border-color: var(--primary);
   background: var(--active-soft);
   color: var(--primary-strong);
+  box-shadow: 0 0 8px var(--neon-glow);
+  text-shadow: 0 0 5px var(--neon-glow);
 }
 
 .flag-icon {
@@ -164,27 +271,23 @@ body {
 
 .theme-toggle-thumb {
   position: absolute;
-  top: 3px;
-  left: 3px;
+  top: 2px;
+  left: 2px;
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #ffffff;
-  color: #0b6f6b;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
+  background: var(--bg);
+  color: var(--primary);
+  box-shadow: 0 0 5px var(--neon-glow), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-html[data-theme="dark"] .theme-toggle-thumb {
-  background: #102033;
-  color: #5eead4;
+  border: 1px solid var(--primary);
 }
 
 .theme-toggle.is-dark .theme-toggle-thumb {
-  transform: translateX(26px);
+  transform: translateX(24px);
 }
 
 .theme-toggle-track {
@@ -192,30 +295,15 @@ html[data-theme="dark"] .theme-toggle-thumb {
   width: 54px;
   height: 30px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 3px,
-      rgba(15, 143, 138, 0.12) 3px,
-      rgba(15, 143, 138, 0.12) 6px
-    ),
-    var(--primary);
+  border: 2px solid var(--primary);
+  background: var(--primary);
   display: block;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow), inset 0 0 10px var(--neon-glow);
 }
 
-html[data-theme="dark"] .theme-toggle-track {
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 3px,
-      rgba(255, 255, 255, 0.08) 3px,
-      rgba(255, 255, 255, 0.08) 6px
-    ),
-    #1b2a40;
+.theme-toggle:hover .theme-toggle-track {
+  box-shadow: 0 0 15px var(--neon-glow), 0 0 30px var(--neon-glow), inset 0 0 15px var(--neon-glow);
 }
 
 .menu-toggle {
@@ -288,6 +376,7 @@ html[data-theme="dark"] .theme-toggle-track {
 
 .menu a:hover {
   color: var(--primary-strong);
+  text-shadow: 0 0 8px var(--neon-glow);
 }
 
 .hero {
@@ -298,6 +387,7 @@ html[data-theme="dark"] .theme-toggle-track {
   color: var(--primary-strong);
   margin: 0 0 8px;
   font-weight: 700;
+  text-shadow: 0 0 8px var(--neon-glow);
 }
 
 h1,
@@ -315,6 +405,8 @@ h1 {
 
 .highlight {
   color: var(--primary-strong);
+  text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
+  font-weight: 800;
 }
 
 .hero-text {
@@ -348,10 +440,17 @@ h1 {
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, var(--primary), #2aa8c4);
+  background: var(--primary);
   color: var(--btn-primary-text);
-  border: 0;
+  border: 2px solid var(--primary);
   font-weight: 700;
+  box-shadow: 0 0 15px var(--neon-glow), 0 0 30px var(--neon-glow);
+  text-shadow: 0 0 5px var(--neon-glow);
+}
+
+.btn.primary:hover {
+  box-shadow: 0 0 25px var(--neon-glow), 0 0 50px var(--neon-glow);
+  transform: translateY(-2px);
 }
 
 .btn.ghost {
@@ -411,6 +510,7 @@ h1 {
 .gallery-item:focus-visible {
   border-color: var(--primary);
   transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--neon-glow), var(--shadow);
 }
 
 .gallery-item h3 {
@@ -445,6 +545,12 @@ h1 {
 .panel-links a {
   color: var(--primary-strong);
   font-weight: 600;
+  text-shadow: 0 0 5px var(--neon-glow);
+  transition: text-shadow 0.2s ease;
+}
+
+.panel-links a:hover {
+  text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
 }
 
 .tictactoe {
@@ -462,6 +568,7 @@ h1 {
   border-color: var(--primary);
   color: var(--primary-strong);
   background: var(--active-soft);
+  box-shadow: 0 0 10px var(--neon-glow);
 }
 
 .board {
@@ -485,6 +592,7 @@ h1 {
 .cell:hover {
   border-color: var(--primary);
   background: var(--cell-hover);
+  box-shadow: 0 0 15px var(--neon-glow);
 }
 
 .snake-hud {
@@ -553,6 +661,12 @@ h1 {
 .contact-list a {
   color: var(--primary-strong);
   font-weight: 600;
+  text-shadow: 0 0 5px var(--neon-glow);
+  transition: text-shadow 0.2s ease;
+}
+
+.contact-list a:hover {
+  text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
 }
 
 .site-footer {
